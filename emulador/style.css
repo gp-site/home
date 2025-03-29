@@ -7,7 +7,14 @@
 }
 
 body {
-    background: #222;
+    margin: 0;
+    overflow: hidden;
+    background-color: #222;
+}
+
+body, html {
+    height: 100%;
+    color: white;
 }
 
 body, #box, #top {
@@ -25,6 +32,7 @@ header {
     background-color: #333;
     padding: 0 2vh;
     width: 100%;
+    margin-top: -15vh;
 }
 
 header .logo {
@@ -128,4 +136,5 @@ select:hover, button:hover {
 
 #top {
     width: 100%;
+  margin-top:-0.5vh;
 }
