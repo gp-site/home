@@ -76,12 +76,6 @@ body, html {
                 color: #ddd
             }
 
-            .logo {
-                width: 130px;
-                height: 130px;
-                filter: drop-shadow(0 0 10px white);
-            }
-
             #top {
                 margin: 5px;
             }
