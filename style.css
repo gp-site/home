@@ -186,4 +186,17 @@ main h1 {
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
 }
+    button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 4vh;
+    padding: 1vh;
+    cursor: pointer;
+    z-index: 10;
+    margin: 1vh;
+}
 }
