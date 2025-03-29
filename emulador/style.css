@@ -32,7 +32,7 @@ header {
     background-color: #333;
     padding: 0 2vh;
     width: 100%;
-    margin-top: -17vh;
+    margin-top: -7.2vh;
 }
 
 header .logo {
@@ -74,7 +74,7 @@ h1 {
 
 iframe {
     width: 60%;
-    height: 60vh;
+    height: 70vh;
     border: none; /* Remove a borda */
     overflow: hidden; /* Oculta barras de rolagem */
     display: block; /* Evita espaços extras */
