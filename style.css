@@ -154,7 +154,13 @@ button.next {
     header .logo {
     height: 4vh;
 }
-
+    
+main {
+    text-align: center;
+    padding: 1vh;
+    margin-top: 10vh;
+}
+    
 main h1 {
     margin-bottom: 3vh;
     font-size: 2vh;
