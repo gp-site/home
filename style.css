@@ -17,11 +17,12 @@ header {
     align-items: center;
     height: 10vh;
     background-color: #333;
-    padding: 0 20px;
+    padding: 0 2vh;
+    width: 100%;
 }
 
 header .logo {
-    height: 80%;
+    height: 8vh;
 }
 
 header nav ul {
@@ -30,14 +31,19 @@ header nav ul {
 }
 
 header nav ul li {
-    margin-left: 20px;
+    margin-left: 2vh;
 }
 
 header nav ul li a {
     color: white;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
+    font-size: 3vh;
+    margin-right: 2vh;
+    margin-left: 2vh;
+    margin-top: 2vh;
 }
+
 header nav ul li a:hover {
     color: red;
     transition: color 0.3s ease-in-out; /* Suaviza a transição */
@@ -46,24 +52,23 @@ header nav ul li a:hover {
 /* Corpo */
 main {
     text-align: center;
-    padding: 10px;
+    padding: 1vh;
 }
 
 main h1 {
-    margin-bottom: 15vh;
-    font-size: 2rem;
+    margin-bottom: 10vh;
+    font-size: 5vh;
     color: white;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600; /* Deixa a fonte mais marcante */
-    letter-spacing: 1px; /* Aumenta um pouco o espaçamento entre letras para dar um visual mais clean */
-    
+    font-weight: 600;
+    letter-spacing: 0.01vh;
 }
 
 /* Carrossel */
 .carousel-container {
     position: relative;
-    width: 700px; /* O carrossel ocupará 100% da largura da tela */
-    max-width: 700px; /* Limite para que o carrossel ocupe no máximo 50% da tela */
+    width: 120vh; /* O carrossel ocupará 100% da largura da tela */
+    max-width: 120vh; /* Limite para que o carrossel ocupe no máximo 50% da tela */
     margin: 0 auto;
     overflow: hidden; /* Oculta as imagens que saem do contêiner */
 }
@@ -84,8 +89,8 @@ main h1 {
 }
 
 .carousel img {
-    width: 700px; /* Cada imagem ocupará toda a largura do carrossel */
-    height: 316px; /* A altura é fixada em 35em */
+    width: 120vh; /* Cada imagem ocupará toda a largura do carrossel */
+    height: auto; /* A altura é fixada em 35em */
     object-fit: cover; /* Assegura que a imagem cubra toda a área disponível */
     top: 1%;
     transition: transform 0.3s ease-in-out; /* Transição suave para efeitos de hover */
@@ -95,9 +100,9 @@ main h1 {
 }
 
 .carousel-item p {
-    margin-top: 10px; /* Espaço entre a imagem e o texto */
-    font-size: 1.2rem; /* Tamanho do texto */
-    color: white; /* Cor do texto */
+    margin-top: 1vh;
+    font-size: 3vh;
+    color: white;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
 }
@@ -110,7 +115,7 @@ button {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    font-size: 2rem;
+    font-size: 6vh;
     padding: 1vh;
     cursor: pointer;
     z-index: 10;
@@ -124,4 +129,4 @@ button.prev {
 button.next {
     right: 0;
 }
-
+@media (max-width: 768px) { }
