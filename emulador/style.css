@@ -32,7 +32,7 @@ header {
     background-color: #333;
     padding: 0 2vh;
     width: 100%;
-    margin-top: -9vh;
+    
 }
 
 header .logo {
@@ -157,6 +157,7 @@ select:hover, button:hover {
         background-color: #333;
         padding: 0 1vh;
         width: 100%;
+        margin-top: -11vh;
     }
 
     header nav ul li a {
