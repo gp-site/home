@@ -55,14 +55,14 @@ main {
     padding: 1vh;
 }
 
-main h1 {
-    margin-bottom: 8vh;
-    font-size: 5vh;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.01vh;
-}
+    main h1 {
+        margin-bottom: 10vh;
+        font-size: 4vh;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.01vh;
+    }
 
 /* Carrossel */
 .carousel-container {
