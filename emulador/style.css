@@ -50,16 +50,15 @@ body, html {
                 color: #ddd
             }
 
-            #input {
-                cursor: pointer;
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                opacity: 0
-            }
-
+#input {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
             #display {
                 width: 100%;
                 height: 100%
