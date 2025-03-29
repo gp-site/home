@@ -207,7 +207,7 @@ window.EJS_SHADERS = {
     "bicubic": {
         "shader": {
             "type": "text",
-            "value": "shaders = 1\n\nshader0 = bicubic.glsl\nfilter_linear0 = false",
+            "value": "shaders = 1\n\nshader0 = bicubic.glsl\nfilter_linear0 = true",
         },
         "resources": [
             {
