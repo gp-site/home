@@ -126,13 +126,13 @@ main {
 }
 
 h1 {
-    margin-bottom: 15vh;
+    margin-bottom: 3vh;
     font-size: 2rem;
     color: white;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600; /* Deixa a fonte mais marcante */
-    letter-spacing: 1px; /* Aumenta um pouco o espaçamento entre letras para dar um visual mais clean */
-    
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top:1vh;
 }
 
 /* Carrossel */
