@@ -32,7 +32,7 @@ body, #box, #top {
     background-color: #333;
     padding: 0 2vh;
     width: 100%;
-    margin-top: -0.4vh;
+    margin-top: -4.4vh;
 }
 
 header .logo {
@@ -70,7 +70,7 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     letter-spacing: 0.01vh;
-    margin-top:1vh;
+    margin-top: 1vh;
 }
 
 iframe {
@@ -81,6 +81,7 @@ iframe {
     display: block;
     margin: 0 auto;
     border: 0.5vh solid #003969;
+    margin-top: -5vh;
 }
 
 #box {
