@@ -184,7 +184,6 @@ select:hover, button:hover {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     letter-spacing: 0.01vh;
-    margin-top: 1vh;
     text-align: center;
 }
 iframe {
