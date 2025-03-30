@@ -22,9 +22,27 @@
         </div>
          <h1>Evia sua Rom e Escolha VideoGame Para Jogar</h1>
         <div id = box>
-            <iframe src="https://demo.emulatorjs.org/"></iframe>
+            <iframe id="meuIframe" src="https://demo.emulatorjs.org/"></iframe>
         </div>
+        
+ <script>
+        window.addEventListener("message", (event) => {
+            if (event.data === "fullscreen") {
+                const iframe = document.getElementById("meuIframe");
 
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.mozRequestFullScreen) { // Firefox
+                    iframe.mozRequestFullScreen();
+                } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari e Opera
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { // IE/Edge
+                    iframe.msRequestFullscreen();
+                }
+            }
+        });
+    </script>
+        
         <script>
             let enableDebug = false;
             let enableThreads = false;
