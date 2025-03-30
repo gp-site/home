@@ -21,27 +21,27 @@
     </header>
         </div>
          <h1>Evia sua Rom e Escolha VideoGame Para Jogar</h1>
-        <div id = box>
             <iframe id="meuIframe" src="https://demo.emulatorjs.org/"></iframe>
-        </div>
-        
- <script>
-        window.addEventListener("message", (event) => {
-            if (event.data === "fullscreen") {
-                const iframe = document.getElementById("meuIframe");
+    <br>
+    <button id="fullscreenBtn">Tela Cheia</button>
 
-                if (iframe.requestFullscreen) {
-                    iframe.requestFullscreen();
-                } else if (iframe.mozRequestFullScreen) { // Firefox
-                    iframe.mozRequestFullScreen();
-                } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari e Opera
-                    iframe.webkitRequestFullscreen();
-                } else if (iframe.msRequestFullscreen) { // IE/Edge
-                    iframe.msRequestFullscreen();
-                }
+    <script>
+        document.getElementById("fullscreenBtn").addEventListener("click", () => {
+            const iframe = document.getElementById("meuIframe");
+
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { // Firefox
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari e Opera
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
             }
         });
     </script>
+        
+
         
         <script>
             let enableDebug = false;
