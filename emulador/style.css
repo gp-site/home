@@ -75,7 +75,7 @@ h1 {
 
 iframe {
     width: 70%;
-    height: 65vh;
+    height: 60vh;
     border: none;
     overflow: hidden;
     display: block;
@@ -86,7 +86,7 @@ iframe {
 
 #box {
        color: #aaa;
-    height: 65vh;
+    height: 60vh;
     width: 120vh;
     max-width: 85%;
     max-height: 85%;
