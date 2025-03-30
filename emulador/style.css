@@ -82,11 +82,11 @@ iframe {
 }
 
 #box {
-    color: #aaa;
-    height: 60vh;
-    width: 100vh;
-    max-width: 80%;
-    max-height: 80%;
+       color: #aaa;
+    height: 65vh;
+    width: 120vh;
+    max-width: 85%;
+    max-height: 85%;
     background-color: #333;
     border-radius: 1vh;
     border: 0.5vh solid #555;
