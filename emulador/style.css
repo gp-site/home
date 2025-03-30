@@ -176,4 +176,14 @@ select:hover, button:hover {
     header .logo {
     height: 4vh;
 }
+    h1 {
+    margin-bottom: 8vh;
+    font-size: 4vh;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01vh;
+    margin-top: 1vh;
+    text-align: center;
+}
 }
