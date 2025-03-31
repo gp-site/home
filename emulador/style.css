@@ -151,9 +151,9 @@ select:hover, button:hover {
         background-color: #333;
         padding: 0 1vh;
         width: 100%;
-        margin-top:-11vh;
+        margin-top: 0.5vh;
     }
-
+    
     header nav ul li a {
         color: white;
         text-decoration: none;
@@ -166,17 +166,17 @@ select:hover, button:hover {
 
     header .logo {
     height: 4vh;
-}
+    }
     h1 {
-    margin-bottom: 8vh;
-    font-size: 4vh;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.01vh;
-    text-align: center;
-    margin-top:-0.3vh;
-}
+        margin-bottom: 8vh;
+        font-size: 4vh;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.01vh;
+        text-align: center;
+        margin-top: 2vh;
+    }
 iframe {
     width: 100%;
     height: 55vh;
