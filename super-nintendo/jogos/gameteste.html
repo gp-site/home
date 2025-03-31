@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Batocera Online: Emulador</title>
+        <link rel = icon href = docs/favicon.ico sizes = "16x16 32x32 48x48 64x64" type = image/vnd.microsoft.icon>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+  <style>
+    div#game {
+    width: 64%;
+    height: 62vh;
+    margin-top: 10vh;
+    margin-left: 18%;
+    margin-right: 18%;
+}
+  </style>
+
+        <div id="top">
+            <header>
+            <img src="../imagem/logo.png" alt="Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="../">Início</a></li>
+                <li><a href="./">Use Sua Rom</a></li>
+            </ul>
+        </nav>
+    </header>
+        </div>
+
+        <body onload="requestFullScreen()">
+            <div id="game"></div>
+        
+            <script type='text/javascript'>
+                function requestFullScreen() {
+                    let elem = document.documentElement;
+                    if (elem.requestFullscreen) {
+                        elem.requestFullscreen();
+                    } else if (elem.mozRequestFullScreen) { // Firefox
+                        elem.mozRequestFullScreen();
+                    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                        elem.webkitRequestFullscreen();
+                    } else if (elem.msRequestFullscreen) { // IE/Edge
+                        elem.msRequestFullscreen();
+                    }
+                }
+                EJS_player = '#game';
+                EJS_core = 'snes';
+                EJS_lightgun = false;
+                EJS_color = "#0097c4";
+                EJS_backgroundColor = "#000"
+                EJS_biosUrl = '';
+                EJS_gameUrl = 'https://static.playemulator.com/uploads/games/202003/ultimate-mortal-kombat-3.smc'
+                EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
+                EJS_startOnLoaded = true;
+            </script>
+            <script src='https://cdn.emulatorjs.org/latest/data/loader.js'></script>
+        </body>
+</html>
