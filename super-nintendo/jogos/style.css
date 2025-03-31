@@ -102,7 +102,7 @@ h1 {
     height: 4vh;
     }
     h1 {
-        margin-bottom: 8vh;
+        margin-bottom: 5vh;
         font-size: 2vh;
         color: white;
         font-family: 'Montserrat', sans-serif;
@@ -113,8 +113,8 @@ h1 {
     }
 #game {
     width: 96%;
-    height: 50vh;
-    margin-top: 3vh;
+    height: 75vh;
+    margin-top: 0vh;
     margin-left: 2%;
     margin-right: 2%;
     border: 0.5vh solid #003969;
