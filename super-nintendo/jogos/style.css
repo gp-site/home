@@ -62,10 +62,10 @@ h1 {
     text-align: center;
 }
 
-div#game {
+#game {
     width: 64%;
     height: 62vh;
-    margin-top: 10vh;
+    margin-top: 2vh;
     margin-left: 18%;
     margin-right: 18%;
     border: 0.5vh solid #003969;
@@ -111,10 +111,10 @@ div#game {
         text-align: center;
         margin-top: 2vh;
     }
-div#game {
+#game {
     width: 96%;
-    height: 65vh;
-    margin-top: 10vh;
+    height: 55vh;
+    margin-top: 5vh;
     margin-left: 2%;
     margin-right: 2%;
     border: 0.5vh solid #003969;
