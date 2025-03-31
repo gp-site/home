@@ -109,12 +109,12 @@ h1 {
         font-weight: 600;
         letter-spacing: 0.01vh;
         text-align: center;
-        margin-top: 2vh;
+        margin-top: 2.5vh;
     }
 #game {
     width: 96%;
-    height: 55vh;
-    margin-top: 5vh;
+    height: 50vh;
+    margin-top: 3vh;
     margin-left: 2%;
     margin-right: 2%;
     border: 0.5vh solid #003969;
