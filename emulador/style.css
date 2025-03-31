@@ -72,13 +72,14 @@ h1 {
 }
 
 iframe {
-    width: 70%;
-    height: 69.7vh;
+        width: 70%;
+    height: 70%;
     border: none;
     overflow: hidden;
     display: block;
     margin: 0 auto;
     border: 0.5vh solid #003969;
+}
 }
 
 #box {
