@@ -190,7 +190,7 @@ iframe {
     select, button {
     padding: 1.5vh 1vh;
     margin: 0.5vh;
-    width: 27vh;
+    width: 40%;
     max-width: 100%;
     font-family: monospace;
     font-weight: bold;
@@ -201,7 +201,9 @@ iframe {
     cursor: pointer;
     transition-duration: 0.2s;
     border: 0.5vh solid #003969;
-    margin-top: -2vh;
+    margin-top: 0vh;
+    margin-left: 30%;
+    margin-right: 30%;
 }
     
 }
