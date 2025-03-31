@@ -52,13 +52,14 @@ header nav ul li a:hover {
 }
 
 h1 {
-    margin-bottom: 8vh;
+    margin-bottom: 3vh;
     font-size: 4vh;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     letter-spacing: 0.01vh;
     margin-top: 0.5vh;
+    text-align: center;
 }
 
 iframe {
@@ -125,7 +126,7 @@ select, button {
     cursor: pointer;
     transition-duration: 0.2s;
     border: 0.5vh solid #003969;
-    margin-top: -2vh;
+    margin-top: -1vh;
     margin-left: 42%;
     margin-right: 42%;
 }
