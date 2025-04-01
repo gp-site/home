@@ -196,7 +196,6 @@ select:hover, button:hover {
     margin-left:2%;
     margin-right:2%;
     border: 0.5vh solid #003969;
-    margin-top: -6vh;
 }
     select, button {
     padding: 1.5vh 1vh;
