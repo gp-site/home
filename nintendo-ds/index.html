@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Batocera Online: Jogos de Nintendo DS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    
+        #azlist li {
+            padding: 15px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        
+    </style>
+</head>
+<header>
+    <img src="imagem/logo.png" alt="Logo" class="logo">
+<nav>
+    <ul>
+        <li><a href="../">Início</a></li>
+        <li><a href="../emulador">Use Sua Rom</a></li>
+    </ul>
+</nav>
+</header>
+<body>
+    <main>
+        <h1>Jogos de Nintendo DS </h1>
+        <ul id="azlist">
+            
+        </ul>
+    </main>
+    
+    <script>
+        // Adiciona som ao rolar o menu
+        const scrollSound = new Audio('https://www.myinstants.com/media/sounds/coin.mp3');
+        document.getElementById('azlist').addEventListener('scroll', () => {
+            scrollSound.play();
+        });
+    </script>
+</body>
+</html>
