@@ -137,6 +137,7 @@ select, button {
     margin-top: -1vh;
     margin-left: 42%;
     margin-right: 42%;
+    display:none;
 }
 
 select:hover, button:hover {
@@ -213,6 +214,7 @@ iframe {
     margin-top: 0vh;
     margin-left: 30%;
     margin-right: 30%;
+    display:none;
 }
     
 }
