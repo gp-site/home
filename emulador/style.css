@@ -177,16 +177,17 @@ select:hover, button:hover {
     height: 4vh;
     }
     h1 {
-        margin-bottom: 8vh;
-        font-size: 4vh;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        letter-spacing: 0.01vh;
-        text-align: center;
-        margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-size: 2.5vh;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01vh;
+    text-align: center;
+    margin-top: 2vh;
     }
-iframe {
+    
+    iframe {
     width: 96%;
     height: 75vh;
     border: none;
