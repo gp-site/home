@@ -193,15 +193,15 @@ main {
 
 .video-container {
     position: absolute;
-    width: 90%;
+    width: 96%;
     margin-bottom: 2vh;
     transform: translateY(0);
-    left: 5%;
-    height: 36vh;
+    left: 2%;
+    height: 46vh;
 }
 .video-container video {
     width: 100%;
-    height: 35vh;
+    height: 45vh;
     border-radius: 1.5vh;
     background: black;
 }
@@ -219,16 +219,17 @@ main {
     margin-top: 1vh;
 }
     
-main h1 {
-    margin-bottom: 1vh;
-    font-size: 2.2vh;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.01vh;
-    width: 100%;
-    margin-bottom:2vh;
-}
+    main h1 {
+        margin-bottom: 1vh;
+        font-size: 2.5vh;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.01vh;
+        width: 100%;
+        margin-bottom: 1vh;
+    }
+
 .carousel-container {
     position: relative;
     width: 45vh;
