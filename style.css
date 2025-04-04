@@ -51,26 +51,30 @@ header nav ul li a:hover {
 
 /* Corpo */
 main {
-    text-align: center;
+    text-align: right;
     padding: 1vh;
+    padding-left: 45vh;
+    position: relative;
 }
 
-    main h1 {
-        margin-bottom: 8vh;
-        font-size: 4vh;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        letter-spacing: 0.01vh;
-    }
+main h1 {
+    margin-bottom: 8vh;
+    font-size: 4vh;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01vh;
+    margin-right: 15vh;
+}
 
 /* Carrossel */
 .carousel-container {
     position: relative;
-    width: 120vh; /* O carrossel ocupará 100% da largura da tela */
-    max-width: 120vh; /* Limite para que o carrossel ocupe no máximo 50% da tela */
+    width: 80vh;
+    max-width: 120vh;
     margin: 0 auto;
-    overflow: hidden; /* Oculta as imagens que saem do contêiner */
+    overflow: hidden;
+    margin-right: 15vh;
 }
 
 .carousel {
@@ -89,12 +93,13 @@ main {
 }
 
 .carousel img {
-    width: 120vh; /* Cada imagem ocupará toda a largura do carrossel */
-    height: auto; /* A altura é fixada em 35em */
-    object-fit: cover; /* Assegura que a imagem cubra toda a área disponível */
+    width: 80vh;
+    height: auto;
+    object-fit: cover;
     top: 1%;
-    transition: transform 0.3s ease-in-out; /* Transição suave para efeitos de hover */
+    transition: transform 0.3s ease-in-out;
 }
+
 .carousel img:hover {
     transform: scale(1.05); /* Efeito de zoom na imagem ao passar o mouse */
 }
@@ -129,8 +134,35 @@ button.prev {
 button.next {
     right: 0;
 }
-@media (max-width: 768px) { 
-    
+.video-container {
+    position: absolute;
+    top: 31vh;
+    left: 15vh;
+    transform: translateY(-50%);
+    width: 74vh;
+    height: auto;
+    z-index: 1;
+    border: 0.5vh solid #003969;
+    border-radius: 1.5vh;
+}
+
+.video-container video {
+    width: 100%;
+    height: 55vh;
+    border-radius: 1.5vh;
+    background: black;
+}
+
+/* Ajuste no main para dar espaço ao vídeo */
+main {
+    text-align: right;
+    padding: 1vh;
+    padding-left: 45vh;
+    position: relative;
+}
+
+
+@media (max-width: 768px) {
     header {
         display: flex;
         justify-content: space-between;
@@ -205,4 +237,16 @@ main {
     z-index: 10;
     margin: 1vh;
 }
+
+    .video-container {
+        position: static; /* Remove o posicionamento absoluto em telas menores */
+        width: 100%;
+        margin-bottom: 2vh; /* Adiciona margem abaixo do vídeo */
+        transform: translateY(0);
+        left: auto;
+    }
+
+    main {
+        padding-left: 1vh; /* Remove o padding esquerdo em telas menores */
+    }
 }
