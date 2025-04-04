@@ -186,6 +186,32 @@ main {
     header .logo {
     height: 4vh;
 }
+.mobile-layout-container { /* Adicione este estilo ao container pai */
+    display: flex;
+    flex-direction: column-reverse; /* Inverte a ordem dos filhos */
+}
+
+.video-container {
+    position: absolute;
+    width: 90%;
+    margin-bottom: 2vh;
+    transform: translateY(0);
+    left: 5%;
+    height: 35vh;
+}
+.video-container video {
+    width: 100%;
+    height: 35vh;
+    border-radius: 1.5vh;
+    background: black;
+}
+.carousel-container {
+    position: relative; /* Mantenha ou ajuste conforme necessário */
+    width: 45vh;
+    max-width: 45vh;
+    margin: 0 auto 2vh auto; /* Adiciona margem abaixo do carrossel */
+    overflow: hidden;
+}
     
 main {
     text-align: center;
@@ -193,15 +219,15 @@ main {
     margin-top: 1vh;
 }
     
-    main h1 {
-        margin-bottom: 10vh;
-        font-size: 4vh;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        letter-spacing: 0.01vh;
-    }
-
+main h1 {
+    margin-bottom: 1vh;
+    font-size: 2vh;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01vh;
+    width: 100%;
+}
 .carousel-container {
     position: relative;
     width: 45vh;
@@ -237,15 +263,6 @@ main {
     z-index: 10;
     margin: 1vh;
 }
-
-    .video-container {
-        position: static; /* Remove o posicionamento absoluto em telas menores */
-        width: 100%;
-        margin-bottom: 2vh; /* Adiciona margem abaixo do vídeo */
-        transform: translateY(0);
-        left: auto;
-    }
-
     main {
         padding-left: 1vh; /* Remove o padding esquerdo em telas menores */
     }
