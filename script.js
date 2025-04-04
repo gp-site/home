@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Inicializa o vídeo com o primeiro item do carrossel
     if (carouselItems.length > 0) {
         const firstLink = carouselItems[0].querySelector('a');
         if (firstLink && firstLink.getAttribute('data-video')) {
@@ -56,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     carouselLinks.forEach(link => {
         link.addEventListener('click', function(event) {
-            event.preventDefault();
+            // event.preventDefault(); <---- REMOVA ESTA LINHA
             const videoUrl = this.getAttribute('data-video');
             changeVideo(videoUrl);
             carouselItems.forEach((item, index) => {
@@ -95,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Garante que o vídeo do primeiro item seja carregado inicialmente
     if (carouselItems.length > 0) {
         moveToIndex(0);
     }
