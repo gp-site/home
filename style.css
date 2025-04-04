@@ -136,10 +136,10 @@ button.next {
 }
 .video-container {
     position: absolute;
-    top: 31vh;
+    top: 35vh;
     left: 15vh;
     transform: translateY(-50%);
-    width: 74vh;
+    width: 90vh;
     height: auto;
     z-index: 1;
     border: 0.5vh solid #003969;
@@ -148,7 +148,7 @@ button.next {
 
 .video-container video {
     width: 100%;
-    height: 55vh;
+    height: 65vh;
     border-radius: 1.5vh;
     background: black;
 }
