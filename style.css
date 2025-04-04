@@ -136,7 +136,7 @@ button.next {
 }
 .video-container {
     position: absolute;
-    top: 38vh;
+    top: 37vh;
     left: 10vh;
     transform: translateY(-50%);
     width: 90vh;
@@ -236,7 +236,7 @@ main {
     max-width: 45vh;
     margin: 0 auto;
     overflow: hidden;
-    margin-bottom:2vh
+    margin-bottom:2vh;
 }
 
 .carousel img {
