@@ -1,49 +1,102 @@
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-const carousel = document.querySelector('.carousel');
-const images = Array.from(carousel.children); // Seleciona as imagens do carrossel
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('header nav ul li a');
+    const carouselLinks = document.querySelectorAll('.carousel-item a');
+    const videoPlayer = document.getElementById('consoleVideo');
+    const videoSource = document.createElement('source');
 
-let currentIndex = 0; // Índice inicial
-const totalImages = images.length;
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const carousel = document.querySelector('.carousel');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const totalItems = carouselItems.length;
+    let currentIndex = 0;
 
-// Função para mover o carrossel
-function moveToIndex(index) {
-    const offset = -index * 100; // A largura de cada imagem ocupa 100% do contêiner
-    carousel.style.transform = `translateX(${offset}%)`; // Move o carrossel para a posição da imagem
-}
-
-// Navegação para a próxima imagem (loop infinito)
-nextButton.addEventListener('click', () => {
-    currentIndex++;
-    moveToIndex(currentIndex);
-
-    // Quando chegar ao final (a última imagem), volta para a primeira imagem
-    if (currentIndex === totalImages) {
-        setTimeout(() => {
-            carousel.style.transition = 'none'; // Desativa a transição temporariamente
-            currentIndex = 0; // Volta para o primeiro item
-            moveToIndex(currentIndex);
-            setTimeout(() => {
-                carousel.style.transition = 'transform 0.5s ease'; // Reativa a transição
-            }, 20);
-        }, 500); // Espera a transição acabar
+    function changeVideo(videoUrl) {
+        if (videoUrl) {
+            videoSource.src = videoUrl;
+            videoSource.type = 'video/mp4';
+            videoPlayer.innerHTML = '';
+            videoPlayer.appendChild(videoSource);
+            videoPlayer.load();
+            videoPlayer.play();
+        } else {
+            videoPlayer.innerHTML = '';
+        }
     }
-});
 
-// Navegação para a imagem anterior (loop infinito)
-prevButton.addEventListener('click', () => {
-    currentIndex--;
-    moveToIndex(currentIndex);
+    function moveToIndex(index, shouldUpdateVideo = true) {
+        currentIndex = index;
+        const offset = -currentIndex * 100;
+        carousel.style.transform = `translateX(${offset}%)`;
 
-    // Quando chegar ao início (a primeira imagem), vai para a última imagem
-    if (currentIndex < 0) {
-        setTimeout(() => {
-            carousel.style.transition = 'none'; // Desativa a transição temporariamente
-            currentIndex = totalImages - 1; // Vai para a última imagem
+        if (shouldUpdateVideo && carouselItems[currentIndex]) {
+            const currentActiveLink = carouselItems[currentIndex].querySelector('a');
+            if (currentActiveLink && currentActiveLink.getAttribute('data-video')) {
+                changeVideo(currentActiveLink.getAttribute('data-video'));
+            } else {
+                changeVideo('');
+            }
+        }
+    }
+
+    // Inicializa o vídeo com o primeiro item do carrossel
+    if (carouselItems.length > 0) {
+        const firstLink = carouselItems[0].querySelector('a');
+        if (firstLink && firstLink.getAttribute('data-video')) {
+            changeVideo(firstLink.getAttribute('data-video'));
+        }
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            const videoUrl = this.getAttribute('data-video');
+            changeVideo(videoUrl);
+        });
+    });
+
+    carouselLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const videoUrl = this.getAttribute('data-video');
+            changeVideo(videoUrl);
+            carouselItems.forEach((item, index) => {
+                if (item.contains(this)) {
+                    moveToIndex(index);
+                }
+            });
+        });
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex++;
+        if (currentIndex === totalItems) {
+            carousel.style.transition = 'none';
+            currentIndex = 0;
             moveToIndex(currentIndex);
             setTimeout(() => {
-                carousel.style.transition = 'transform 0.5s ease'; // Reativa a transição
+                carousel.style.transition = 'transform 0.5s ease';
             }, 20);
-        }, 500); // Espera a transição acabar
+        } else {
+            moveToIndex(currentIndex);
+        }
+    });
+
+    prevButton.addEventListener('click', () => {
+        currentIndex--;
+        if (currentIndex < 0) {
+            carousel.style.transition = 'none';
+            currentIndex = totalItems - 1;
+            moveToIndex(currentIndex);
+            setTimeout(() => {
+                carousel.style.transition = 'transform 0.5s ease';
+            }, 20);
+        } else {
+            moveToIndex(currentIndex);
+        }
+    });
+
+    // Garante que o vídeo do primeiro item seja carregado inicialmente
+    if (carouselItems.length > 0) {
+        moveToIndex(0);
     }
 });
