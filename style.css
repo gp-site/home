@@ -64,17 +64,17 @@ main h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     letter-spacing: 0.01vh;
-    margin-right: 25vh;
+    margin-right: 30vh;
 }
 
 /* Carrossel */
 .carousel-container {
     position: relative;
-    width: 80vh;
+    width: 100vh;
     max-width: 120vh;
     margin: 0 auto;
     overflow: hidden;
-    margin-right: 15vh;
+    margin-right: 10vh;
 }
 
 .carousel {
@@ -93,7 +93,7 @@ main h1 {
 }
 
 .carousel img {
-    width: 80vh;
+    width: 100vh;
     height: auto;
     object-fit: cover;
     top: 1%;
