@@ -221,13 +221,13 @@ main {
     
 main h1 {
     margin-bottom: 1vh;
-    font-size: 2.5vh;
+    font-size: 2.2vh;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     letter-spacing: 0.01vh;
     width: 100%;
-    margin-bottom:10vh;
+    margin-bottom:2vh;
 }
 .carousel-container {
     position: relative;
@@ -235,6 +235,7 @@ main h1 {
     max-width: 45vh;
     margin: 0 auto;
     overflow: hidden;
+    margin-bottom:8vh
 }
 
 .carousel img {
