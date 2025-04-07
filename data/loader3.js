@@ -1,4 +1,5 @@
-(async function() {
+(async function () {
+    const baseURL = "https://www.emulatorjs.com/";
     const scripts = [
         "emulator.js",
         "nipplejs.js",
@@ -10,66 +11,48 @@
         "compression.js"
     ];
 
-    const folderPath = (path) => path.substring(0, path.length - path.split('/').pop().length);
-    let scriptPath = (typeof window.EJS_pathtodata === "string") ? window.EJS_pathtodata : folderPath((new URL(document.currentScript.src)).pathname);
-    if (!scriptPath.endsWith('/')) scriptPath += '/';
-
     function loadScript(file) {
         return new Promise(function (resolve, reject) {
             let script = document.createElement('script');
-            script.src = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[file] === 'string')
-                ? EJS_paths[file]
-                : (file.endsWith("emulator.min.js") ? scriptPath + file : scriptPath + "src/" + file);
+            script.src = baseURL + file;
             script.onload = resolve;
-            script.onerror = () => filesmissing(file).then(resolve);
+            script.onerror = () => {
+                console.error("Erro ao carregar script:", file);
+                resolve(); // continua mesmo se falhar
+            }
             document.head.appendChild(script);
         });
     }
 
     function loadStyle(file) {
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             let css = document.createElement('link');
             css.rel = 'stylesheet';
-            css.href = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[file] === 'string')
-                ? EJS_paths[file]
-                : scriptPath + file;
+            css.href = baseURL + file;
             css.onload = resolve;
-            css.onerror = () => filesmissing(file).then(resolve);
+            css.onerror = () => {
+                console.error("Erro ao carregar estilo:", file);
+                resolve();
+            }
             document.head.appendChild(css);
         });
     }
 
-    async function filesmissing(file) {
-        console.error("Failed to load " + file);
-        let minifiedFailed = file.includes(".min.") && !file.includes("socket");
-        console[minifiedFailed ? "warn" : "error"]("Missing file: " + file + ". Consider downloading from:");
-        console.log("https://github.com/EmulatorJS/EmulatorJS/releases/latest or https://cdn.emulatorjs.org/latest/data/emulator.min.zip");
+    const useDebug = (typeof window.EJS_DEBUG_XX !== "undefined" && window.EJS_DEBUG_XX === true);
 
-        if (minifiedFailed) {
-            console.log("Trying non-minified fallback...");
-            if (file === "emulator.min.js") {
-                for (let i = 0; i < scripts.length; i++) {
-                    await loadScript(scripts[i]);
-                }
-            } else {
-                await loadStyle('emulator.css');
-            }
-        }
-    }
-
-    if (typeof EJS_DEBUG_XX !== 'undefined' && EJS_DEBUG_XX === true) {
+    if (useDebug) {
         for (let i = 0; i < scripts.length; i++) {
-            await loadScript(scripts[i]);
+            await loadScript("src/" + scripts[i]);
         }
-        await loadStyle('emulator.css');
+        await loadStyle("emulator.css");
     } else {
-        await loadScript('emulator.min.js');
-        await loadStyle('emulator.min.css');
+        await loadScript("emulator.min.js");
+        await loadStyle("emulator.min.css");
     }
 
     const config = {
         gameUrl: window.EJS_gameUrl,
-        dataPath: scriptPath,
+        dataPath: baseURL,
         system: window.EJS_core,
         biosUrl: window.EJS_biosUrl,
         gameName: window.EJS_gameName,
@@ -114,6 +97,7 @@
         shaders: Object.assign({}, window.EJS_SHADERS, window.EJS_shaders || {})
     };
 
+    // Carregamento de idioma
     let systemLang;
     try {
         systemLang = Intl.DateTimeFormat().resolvedOptions().locale;
@@ -122,15 +106,12 @@
     if ((typeof window.EJS_language === "string" && window.EJS_language !== "en-US") || (systemLang && window.EJS_disableAutoLang !== false)) {
         const language = window.EJS_language || systemLang;
         try {
-            let path = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[language] === 'string')
-                ? EJS_paths[language]
-                : scriptPath + "localization/" + language + ".json";
+            console.log("Loading language", language);
+            const path = baseURL + "localization/" + language + ".json";
             config.language = language;
             config.langJson = JSON.parse(await (await fetch(path)).text());
         } catch (e) {
-            console.log("Language file not found:", language);
-            delete config.language;
-            delete config.langJson;
+            console.log("Missing language", language);
         }
     }
 
