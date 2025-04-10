@@ -52,5 +52,52 @@
                 EJS_startOnLoaded = true;
             </script>
             <script src='../../data/loader.js'></script>
+             <script>
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Função para aplicar o tema salvo (se existir)
+        function applySavedTheme() {
+            const savedTheme = getCookie('siteTheme');
+            const body = document.getElementById('pageBody');
+            const themeSelector = document.getElementById('themeSelector');
+
+            if (savedTheme) {
+                body.className = savedTheme + '-theme';
+                themeSelector.value = savedTheme;
+            }
+        }
+
+        // Evento para salvar o tema quando o usuário muda a seleção
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeSelector = document.getElementById('themeSelector');
+            themeSelector.addEventListener('change', function() {
+                const selectedTheme = this.value;
+                setCookie('siteTheme', selectedTheme, 30); // Salva o tema por 30 dias
+                applySavedTheme(); // Aplica o tema imediatamente
+            });
+
+            // Aplica o tema salvo ao carregar a página
+            applySavedTheme();
+        });
+    </script>
         </body>
 </html>
