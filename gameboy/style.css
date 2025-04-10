@@ -228,6 +228,7 @@ iframe {
     background-size: cover;
     background-color: black;
     position: relative;
+    background-image: url(../imagem/fundoazlist.gif);
 }     
 #azlist li {
     padding: 1.5vh;
