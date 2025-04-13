@@ -171,7 +171,7 @@
 
 // Cria o botão
 const botaoDownload = document.createElement("button");
-botaoDownload.textContent = "Baixar ROM";
+botaoDownload.textContent = "Baixar Rom";
 botaoDownload.style.marginLeft = "20px";
 botaoDownload.style.padding = "8px 12px";
 botaoDownload.style.backgroundColor = "#0097c4";
