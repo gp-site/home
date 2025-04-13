@@ -25,6 +25,7 @@ body {
 
 header .logo {
     height: 8vh;
+    padding-right: 118vh;
 }
 
 header nav ul {
@@ -49,6 +50,14 @@ header nav ul li a {
 header nav ul li a:hover {
     color: red;
     transition: color 0.3s ease-in-out; /* Suaviza a transição */
+}
+
+button {
+    font-size: 2vh !important;
+    padding: 0.8vh !important;
+    margin-left: 2vh !important;
+    border-radius: 1%;
+    border-radius: 0.5vh !important;
 }
 
 h1 {
