@@ -14,19 +14,17 @@ body {
 
     header {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     height: 10vh;
     background-color: #333;
     padding: 0 2vh;
     width: 100%;
-    margin-top: 0.5vh;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 header .logo {
     height: 8vh;
-    margin-right: 110vh;
 }
 
 header nav ul {
@@ -52,37 +50,66 @@ header nav ul li a:hover {
     color: red;
     transition: color 0.3s ease-in-out; /* Suaviza a transição */
 }
-button {
-    margin-left: 0vh !important;
-    padding: 0.8vh 1.2vh !important;
-    border-radius: 0.5vh !important;
-    font-size: 3vh !important;
-}
+
 h1 {
     margin-bottom: 2vh;
     font-size: 4vh;
     color: white;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.01vh;
     margin-top: 1vh;
     text-align: center;
 }
 
-#game {
+#azlist li a {
+    text-decoration: none;
+    color: #0f0;
+    font-size: 4vh;
+}
+#azlist li:hover {
+    background: #003969;
+}
+#azlist {
+    list-style: none;
+    padding: 0;
     width: 64%;
-    height: 65vh !important;
-    margin-top: 2vh;
+    height: 65vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 0.5vh solid #003969;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 1vh;
+    scrollbar-width: none;
     margin-left: 18%;
     margin-right: 18%;
-    border: 0.5vh solid #003969;
+    text-align: center;
+    scrollbar-width: thin;
+    scrollbar-color: #003969 #000;
+    background-size: cover;
+    background-color:black;
+    position: relative;
+    background-image: url('../imagem/fundoazlist.gif');
+    background-position: center;
+    background-size: cover;
 }
-#top {
-    width: 100%;
-  margin-top:-0.5vh;
+    
+#azlist li {
+    padding: 1.5vh;
+    transition: background 0.3s, transform 0.2s;
+}
+#azlist::-webkit-scrollbar {
+    width: 8px;
+}
+#azlist::-webkit-scrollbar-track {
+    background: #000;
+}
+#azlist::-webkit-scrollbar-thumb {
+    background: #ff0000;
+    border-radius: 4px;
 }
 
-@media (max-width: 768px) { 
+    @media (max-width: 768px) { 
     
     header {
         display: flex;
@@ -93,44 +120,62 @@ h1 {
         padding: 0 1vh;
         width: 100%;
     }
-    
+
     header nav ul li a {
         color: white;
         text-decoration: none;
         font-family: 'Montserrat', sans-serif;
-        font-size: 1.6vh;
-        margin-right: 0vh;
-        margin-left: 0vh;
+        font-size: 2vh;
+        margin-right: 1vh;
+        margin-left: 1vh;
         margin-top: 2vh;
     }
 
     header .logo {
     height: 4vh;
-    margin-right: 0vh;
-}
-      button {
-        margin-left: 0vh !important;
-        padding: 0.4vh 0.7vh !important;
-        border-radius: 0.5vh !important;
-        font-size: 1.6vh !important;
+        
+   }
+   h1 {
+    margin-bottom: 2vh;
+    font-size: 2.5vh;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01vh;
+    text-align: center;
+    margin-top: 2vh;
     }
-    h1 {
-        margin-bottom: 2vh;
-        font-size: 2.5vh;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        letter-spacing: 0.01vh;
-        text-align: center;
-        margin-top: 2vh;
-    }
-#game {
+        
+  #azlist {
+    list-style: none;
+    padding: 0;
     width: 96%;
-    height: 75vh !important;
-    margin-top: 0vh;
+    height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 0.5vh solid #003969;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 1vh;
+    scrollbar-width: none;
     margin-left: 2%;
     margin-right: 2%;
-    border: 0.5vh solid #003969;
+    text-align: center;
+    scrollbar-width: thin;
+    scrollbar-color: #003969 #000;
+    background-size: cover;
+    background-color: black;
+    position: relative;
+    background-image: url(../imagem/fundoazlist.gif);
+}     
+#azlist li {
+    padding: 1.5vh;
+    transition: background 0.3s, transform 0.2s;
 }
+#azlist li a {
+    text-decoration: none;
+    color: #0f0;
+    font-size: 2.5vh;
+}
+
     
 }
