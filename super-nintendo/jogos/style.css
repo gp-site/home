@@ -53,7 +53,7 @@ header nav ul li a:hover {
     transition: color 0.3s ease-in-out; /* Suaviza a transição */
 }
 button {
-    margin-left: 3.5vh !important;
+    margin-left: 0vh !important;
     padding: 0.8vh 1.2vh !important;
     border-radius: 0.5vh !important;
     font-size: 3vh !important;
@@ -71,7 +71,7 @@ h1 {
 
 #game {
     width: 64%;
-    height: 65vh;
+    height: 65vh !important;
     margin-top: 2vh;
     margin-left: 18%;
     margin-right: 18%;
@@ -99,18 +99,18 @@ h1 {
         text-decoration: none;
         font-family: 'Montserrat', sans-serif;
         font-size: 1.6vh;
-        margin-right: 1vh;
-        margin-left: 1vh;
+        margin-right: 0vh;
+        margin-left: 0vh;
         margin-top: 2vh;
     }
 
     header .logo {
-    height: 3vh;
+    height: 4vh;
     margin-right: 0vh;
 }
       button {
-        margin-left: 1vh !important;
-        padding: 0.8vh 1.2vh !important;
+        margin-left: 0vh !important;
+        padding: 0.4vh 0.7vh !important;
         border-radius: 0.5vh !important;
         font-size: 1.6vh !important;
     }
@@ -126,7 +126,7 @@ h1 {
     }
 #game {
     width: 96%;
-    height: 75vh;
+    height: 75vh !important;
     margin-top: 0vh;
     margin-left: 2%;
     margin-right: 2%;
