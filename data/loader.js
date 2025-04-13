@@ -182,7 +182,7 @@ botaoDownload.style.cursor = "pointer";
 
 // Ação ao clicar
 botaoDownload.onclick = function () {
-    window.open(EJS_gameUrl, '_blank');
+    window.open(EJS_gameUrl);
 };
 
 // Insere no header (após o nav)
