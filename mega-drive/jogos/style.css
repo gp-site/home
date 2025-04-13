@@ -101,6 +101,8 @@ h1 {
 
     header .logo {
     height: 3vh;
+    margin-right: 0vh;
+}
     }
     h1 {
         margin-bottom: 2vh;
