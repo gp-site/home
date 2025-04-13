@@ -158,3 +158,26 @@
         window.EJS_emulator.on("saveSave", window.EJS_onSaveSave);
     }
 })();
+
+// Cria o botão
+const botaoDownload = document.createElement("button");
+botaoDownload.textContent = "Baixar Rom";
+botaoDownload.style.marginLeft = "20px";
+botaoDownload.style.padding = "8px 12px";
+botaoDownload.style.backgroundColor = "#0097c4";
+botaoDownload.style.color = "white";
+botaoDownload.style.border = "none";
+botaoDownload.style.borderRadius = "6px";
+botaoDownload.style.cursor = "pointer";
+
+// Ação ao clicar
+botaoDownload.onclick = function () {
+    window.open(EJS_gameUrl);
+};
+
+// Insere no header (após o nav)
+const header = document.querySelector("header");
+if (header) {
+    header.appendChild(botaoDownload);
+}
+
