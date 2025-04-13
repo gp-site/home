@@ -14,7 +14,7 @@ body {
 
     header {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
     height: 10vh;
     background-color: #333;
@@ -26,6 +26,7 @@ body {
 
 header .logo {
     height: 8vh;
+    margin-right: 110vh;
 }
 
 header nav ul {
@@ -51,7 +52,12 @@ header nav ul li a:hover {
     color: red;
     transition: color 0.3s ease-in-out; /* Suaviza a transição */
 }
-
+button {
+    margin-left: 3.5vh !important;
+    padding: 0.8vh 1.2vh !important;
+    border-radius: 0.5vh !important;
+    font-size: 3vh !important;
+}
 h1 {
     margin-bottom: 2vh;
     font-size: 4vh;
@@ -92,14 +98,21 @@ h1 {
         color: white;
         text-decoration: none;
         font-family: 'Montserrat', sans-serif;
-        font-size: 2vh;
+        font-size: 1.6vh;
         margin-right: 1vh;
         margin-left: 1vh;
         margin-top: 2vh;
     }
 
     header .logo {
-    height: 4vh;
+    height: 3vh;
+    margin-right: 0vh;
+}
+      button {
+        margin-left: 1vh !important;
+        padding: 0.8vh 1.2vh !important;
+        border-radius: 0.5vh !important;
+        font-size: 1.6vh !important;
     }
     h1 {
         margin-bottom: 2vh;
