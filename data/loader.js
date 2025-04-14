@@ -208,27 +208,3 @@ const lista = document.querySelector("ul");
 if (lista) {
     lista.appendChild(novoLi);
 }
-
-
-// Bloqueia clique direito
-  document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-  });
-
-  // Bloqueia F12, Ctrl+Shift+I, Ctrl+U, etc.
-  document.addEventListener("keydown", function (e) {
-    // F12
-    if (e.key === "F12") {
-      e.preventDefault();
-    }
-
-    // Ctrl+Shift+I ou Ctrl+Shift+J (inspecionar)
-    if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) {
-      e.preventDefault();
-    }
-
-    // Ctrl+U (ver código fonte)
-    if (e.ctrlKey && e.key === "u") {
-      e.preventDefault();
-    }
-  });
