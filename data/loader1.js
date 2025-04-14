@@ -166,8 +166,6 @@ const novoLi = document.createElement("li");
 const linkDownload = document.createElement("a");
 linkDownload.textContent = "Baixar Rom";
 linkDownload.href = EJS_gameUrl; // Usa a variável que já contém o link
-linkDownload.target = "_blank"; // Abre em nova aba (opcional)
-linkDownload.style.color = "white"; // Estilo opcional
 
 // Insere o <a> dentro do <li>
 novoLi.appendChild(linkDownload);
