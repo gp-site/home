@@ -169,24 +169,24 @@
     }
 })();
 
-// Cria o botão
-const botaoDownload = document.createElement("button");
-botaoDownload.textContent = "Baixar Rom";
-botaoDownload.style.marginLeft = "20px";
-botaoDownload.style.padding = "8px 12px";
-botaoDownload.style.backgroundColor = "transparent";
-botaoDownload.style.color = "white";
-botaoDownload.style.border = "none";
-botaoDownload.style.borderRadius = "6px";
-botaoDownload.style.cursor = "pointer";
+// Cria um novo <li>
+const novoLi = document.createElement("li");
 
-// Ação ao clicar
-botaoDownload.onclick = function () {
-    window.open(EJS_gameUrl);
-};
+// Cria o <a> dentro do <li>
+const linkDownload = document.createElement("a");
+linkDownload.textContent = "Baixar Rom";
+linkDownload.href = EJS_gameUrl; // Usa a variável que já contém o link
+linkDownload.target = "_blank"; // Abre em nova aba (opcional)
+linkDownload.style.color = "white"; // Estilo opcional
 
-// Insere no header (após o nav)
-const header = document.querySelector("header");
-if (header) {
-    header.appendChild(botaoDownload);
+// Insere o <a> dentro do <li>
+novoLi.appendChild(linkDownload);
+
+// Encontra a <ul> onde o <li> será adicionado
+const lista = document.querySelector("ul");
+
+// Adiciona o novo <li> à lista
+if (lista) {
+    lista.appendChild(novoLi);
 }
+
