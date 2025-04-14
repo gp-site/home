@@ -169,11 +169,30 @@
     }
 })();
 
-// Cria um novo <li>
 const novoLi = document.createElement("li");
 
-// Cria o <a> dentro do <li>
+// Cria o <a> sem mostrar o link real
 const linkDownload = document.createElement("a");
+linkDownload.textContent = "Baixar Rom";
+linkDownload.href = "#"; // Evita que mostre o link real no rodapé
+linkDownload.style.color = "white";
+linkDownload.style.cursor = "pointer";
+
+// Ação no clique (abre na mesma aba)
+linkDownload.onclick = function (e) {
+    e.preventDefault(); // Evita que vá pro "#"
+    window.location.href = EJS_gameUrl; // Redireciona sem mostrar o link real
+};
+
+// Adiciona ao li
+novoLi.appendChild(linkDownload);
+
+// Adiciona na ul existente
+const lista = document.querySelector("ul");
+if (lista) {
+    lista.appendChild(novoLi);
+}
+nkDownload = document.createElement("a");
 linkDownload.textContent = "Baixar Rom";
 linkDownload.href = EJS_gameUrl; // Usa a variável que já contém o link
 linkDownload.target = "_blank"; // Abre em nova aba (opcional)
@@ -190,3 +209,26 @@ if (lista) {
     lista.appendChild(novoLi);
 }
 
+
+// Bloqueia clique direito
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+
+  // Bloqueia F12, Ctrl+Shift+I, Ctrl+U, etc.
+  document.addEventListener("keydown", function (e) {
+    // F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+
+    // Ctrl+Shift+I ou Ctrl+Shift+J (inspecionar)
+    if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) {
+      e.preventDefault();
+    }
+
+    // Ctrl+U (ver código fonte)
+    if (e.ctrlKey && e.key === "u") {
+      e.preventDefault();
+    }
+  });
