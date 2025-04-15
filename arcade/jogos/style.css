@@ -52,10 +52,6 @@ header nav ul li a:hover {
     transition: color 0.3s ease-in-out; /* Suaviza a transição */
 }
 
-nav:hover ul li a {
-  display: none;
-}
-
 h1 {
     margin-bottom: 2vh;
     font-size: 4vh;
@@ -101,10 +97,6 @@ h1 {
         margin-left: 0vh;
         margin-top: 2vh;
     }
-
-    nav:hover ul li a {
-  display: none;
-}
 
      header .logo {
     height: 4vh;   
