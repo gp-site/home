@@ -78,6 +78,11 @@
         await loadScript('emulator.min.js');
         await loadStyle('emulator.min.css');
     }
+    
+    if (typeof window.EJS_multidisk === "undefined") {
+    window.EJS_multidisk = true;
+}
+    
     const config = {};
     config.gameUrl = window.EJS_gameUrl;
     config.dataPath = scriptPath;
