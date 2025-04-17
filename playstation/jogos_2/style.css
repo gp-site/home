@@ -20,6 +20,7 @@ body {
     background-color: #333;
     padding: 0 2vh;
     width: 100%;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
     margin-top: 0.5vh;
 }
 
@@ -64,7 +65,7 @@ h1 {
 
 #game {
     width: 64%;
-    height: 65vh;
+    height: 65vh !important;
     margin-top: 2vh;
     margin-left: 18%;
     margin-right: 18%;
@@ -91,14 +92,20 @@ h1 {
         color: white;
         text-decoration: none;
         font-family: 'Montserrat', sans-serif;
-        font-size: 2vh;
-        margin-right: 1vh;
-        margin-left: 1vh;
+        font-size: 1.6vh;
+        margin-right: 0vh;
+        margin-left: 0vh;
         margin-top: 2vh;
     }
 
-    header .logo {
-    height: 4vh;
+     header .logo {
+    height: 4vh;   
+   }
+      button {
+        margin-left: 0vh !important;
+        padding: 0.4vh 0.7vh !important;
+        border-radius: 0.5vh !important;
+        font-size: 1.6vh !important;
     }
     h1 {
         margin-bottom: 2vh;
@@ -112,7 +119,7 @@ h1 {
     }
 #game {
     width: 96%;
-    height: 75vh;
+    height: 75vh !important;
     margin-top: 0vh;
     margin-left: 2%;
     margin-right: 2%;
