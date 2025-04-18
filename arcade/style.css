@@ -108,6 +108,21 @@ h1 {
     background: #ff0000;
     border-radius: 4px;
 }
+input#searchInput {
+    width: 64%;
+    margin-left: 18%;
+    margin-right: 18%;
+    background-color: transparent;
+    border: solid 0.05vh #999;
+    margin-bottom: 1vh;
+    background: black;
+    text-align: center;
+    font-size: 3vh;
+    font-family: 'Montserrat', sans-serif;
+    color: #999;
+    padding: 1vh;
+    border-radius: 0.5vh;
+}
 
     @media (max-width: 768px) { 
     
