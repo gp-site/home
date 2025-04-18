@@ -108,6 +108,24 @@ h1 {
     background: #ff0000;
     border-radius: 4px;
 }
+input#searchInput {
+    width: 56%;
+    margin-left: 22%;
+    margin-right: 22%;
+    background-color: transparent;
+    border: solid 0.05vh #999;
+    margin-bottom: 1vh;
+    background: #222;
+    text-align: center;
+    font-size: 3vh;
+    font-family: 'Montserrat', sans-serif;
+    color: #999;
+    padding: 1vh;
+    border-radius: 0.5vh;
+    z-index: 1000;
+    position: absolute;
+    margin-top: -15.2vh;
+}
 
     @media (max-width: 768px) { 
     
@@ -176,6 +194,23 @@ h1 {
     color: #0f0;
     font-size: 2.5vh;
 }
-
+    input#searchInput {
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
+        background-color: transparent;
+        border: solid 0.05vh #999;
+        margin-bottom: 0.6vh;
+        background: black;
+        text-align: center;
+        font-size: 2vh;
+        font-family: 'Montserrat', sans-serif;
+        color: #999;
+        padding: 0.8vh;
+        border-radius: 0.5vh;
+        margin-top: -0.5vh;
+        position: revert-layer;
+        z-index: 0;
+    }
     
 }
