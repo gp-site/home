@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Batocera Online: Jogos de Arcade</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        #azlist li {
+            padding: 15px;
+            transition: background 0.3s, transform 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="imagem/logo.png" alt="Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="../">Início</a></li>
+                <li><a href="../emulador">Use Sua Rom</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Jogos de Arcade</h1>
+        <input type="text" id="searchInput" placeholder="Pesquisar jogo..." onkeyup="filterList()" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        <ul id="azlist">
+            <li><a href="jogos/1942">1942</a></li>
+            <li><a href="jogos/1943">1943</a></li>
+            <li><a href="jogos/1943-kai">1943 Kai</a></li>
+            <li><a href="jogos/1943-mark-ii">1943 Mark II</a></li>
+            <li><a href="jogos/aliens">Aliens</a></li>
+            <li><a href="jogos/alien-vs-predator">Alien vs. Predator</a></li>
+            <li><a href="jogos/arkanoid">Arkanoid</a></li>
+            <li><a href="jogos/arkanoid-returns">Arkanoid Returns</a></li>
+            <li><a href="jogos/asteroids">Asteroids</a></li>
+            <li><a href="jogos/asteroids-deluxe">Asteroids Deluxe</a></li>
+            <!-- (demais jogos omitidos por brevidade, mantenha os seus aqui normalmente) -->
+        </ul>
+    </main>
+
+    <script>
+        function filterList() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const list = document.getElementById('azlist');
+            const items = list.getElementsByTagName('li');
+
+            for (let i = 0; i < items.length; i++) {
+                const link = items[i].getElementsByTagName('a')[0];
+                const text = link.textContent || link.innerText;
+
+                if (text.toLowerCase().includes(filter)) {
+                    items[i].style.display = '';
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Som ao rolar o menu (opcional)
+        const scrollSound = new Audio('https://www.myinstants.com/media/sounds/coin.mp3');
+        document.getElementById('azlist').addEventListener('scroll', () => {
+            scrollSound.play();
+        });
+    </script>
+</body>
+</html>
