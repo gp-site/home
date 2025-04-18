@@ -109,19 +109,22 @@ h1 {
     border-radius: 4px;
 }
 input#searchInput {
-    width: 64%;
-    margin-left: 18%;
-    margin-right: 18%;
+    width: 56%;
+    margin-left: 22%;
+    margin-right: 22%;
     background-color: transparent;
     border: solid 0.05vh #999;
     margin-bottom: 1vh;
-    background: black;
+    background: #222;
     text-align: center;
     font-size: 3vh;
     font-family: 'Montserrat', sans-serif;
     color: #999;
     padding: 1vh;
     border-radius: 0.5vh;
+    z-index: 1000;
+    position: absolute;
+    margin-top: -15.2vh;
 }
 
     @media (max-width: 768px) { 
