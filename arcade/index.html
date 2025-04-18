@@ -27,6 +27,7 @@
 <body>
     <main>
         <h1>Jogos de Arcade </h1>
+        <input type="text" id="searchInput" placeholder="Pesquisar jogo..." onkeyup="filterList()" style="width: 100%; padding: 8px; margin-bottom: 10px;">
         <ul id="azlist">
             <li><a href="jogos/1942">1942</a></li>
             <li><a href="jogos/1943">1943</a></li>
@@ -142,8 +143,7 @@
             <li><a href="jogos/virtua-fighter">Virtua Fighter</a></li>        
         </ul>
     </main>
-    <input type="text" id="searchInput" placeholder="Pesquisar jogo..." onkeyup="filterList()" style="width: 100%; padding: 8px; margin-bottom: 10px;">
-
+    
     <script>
 function filterList() {
   var input, filter, ul, li, i, txtValue;
