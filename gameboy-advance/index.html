@@ -27,13 +27,32 @@
 <body>
     <main>
         <h1>Jogos de Gameboy Advance</h1>
+        <input type="text" id="searchInput" placeholder="Pesquisar jogo..." onkeyup="filterList()">
         <ul id="azlist">
             
         </ul>
     </main>
     
-    <script>
-        // Adiciona som ao rolar o menu
+   <script>
+        function filterList() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const list = document.getElementById('azlist');
+            const items = list.getElementsByTagName('li');
+
+            for (let i = 0; i < items.length; i++) {
+                const link = items[i].getElementsByTagName('a')[0];
+                const text = link.textContent || link.innerText;
+
+                if (text.toLowerCase().includes(filter)) {
+                    items[i].style.display = '';
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Som ao rolar o menu (opcional)
         const scrollSound = new Audio('https://www.myinstants.com/media/sounds/coin.mp3');
         document.getElementById('azlist').addEventListener('scroll', () => {
             scrollSound.play();
