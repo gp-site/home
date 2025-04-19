@@ -1,3 +1,21 @@
+// Bloqueia botão direito do mouse
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// Bloqueia teclas como F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, etc.
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+        (e.ctrlKey && (e.key === 'U' || e.key === 'S'))
+    ) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    }
+});
+
 (async function() {
     const scripts = [
         "emulator.js",
@@ -13,19 +31,13 @@
     const folderPath = (path) => path.substring(0, path.length - path.split('/').pop().length);
     let scriptPath = (typeof window.EJS_pathtodata === "string") ? window.EJS_pathtodata : folderPath((new URL(document.currentScript.src)).pathname);
     if (!scriptPath.endsWith('/')) scriptPath+='/';
-    //console.log(scriptPath);
+
     function loadScript(file) {
         return new Promise(function (resolve, reject) {
             let script = document.createElement('script');
-            script.src = function() {
-                if ('undefined' != typeof EJS_paths && typeof EJS_paths[file] === 'string') {
-                    return EJS_paths[file];
-                } else if (file.endsWith("emulator.min.js")) {
-                    return scriptPath + file;
-                } else {
-                    return scriptPath + "src/" + file;
-                }
-            }();
+            script.src = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[file] === 'string')
+                ? EJS_paths[file]
+                : (file.endsWith("emulator.min.js") ? scriptPath + file : scriptPath + "src/" + file);
             script.onload = resolve;
             script.onerror = () => {
                 filesmissing(file).then(e => resolve());
@@ -33,18 +45,14 @@
             document.head.appendChild(script);
         })
     }
-    
+
     function loadStyle(file) {
         return new Promise(function(resolve, reject) {
             let css = document.createElement('link');
             css.rel = 'stylesheet';
-            css.href = function() {
-                if ('undefined' != typeof EJS_paths && typeof EJS_paths[file] === 'string') {
-                    return EJS_paths[file];
-                } else {
-                    return scriptPath+file;
-                }
-            }();
+            css.href = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[file] === 'string')
+                ? EJS_paths[file]
+                : scriptPath + file;
             css.onload = resolve;
             css.onerror = () => {
                 filesmissing(file).then(e => resolve());
@@ -56,9 +64,8 @@
     async function filesmissing(file) {
         console.error("Failed to load " + file);
         let minifiedFailed = file.includes(".min.") && !file.includes("socket");
-        console[minifiedFailed?"warn":"error"]("Failed to load " + file + " beacuse it's likly that the minified files are missing.\nTo fix this you have 3 options:\n1. You can download the zip from the latest release here: https://github.com/EmulatorJS/EmulatorJS/releases/latest - Stable\n2. You can download the zip from here: https://cdn.emulatorjs.org/latest/data/emulator.min.zip and extract it to the data/ folder. (easiest option) - Beta\n3. You can build the files by running `npm i && npm run build` in the data/minify folder. (hardest option) - Beta\nNote: you will probably need to do the same for the cores, extract them to the data/cores/ folder.");
+        console[minifiedFailed?"warn":"error"]("Falha ao carregar: " + file);
         if (minifiedFailed) {
-            console.log("Attempting to load non-minified files");
             if (file === "emulator.min.js") {
                 for (let i=0; i<scripts.length; i++) {
                     await loadScript(scripts[i]);
@@ -68,8 +75,8 @@
             }
         }
     }
-    
-    if (('undefined' != typeof EJS_DEBUG_XX && true === EJS_DEBUG_XX)) {
+
+    if (typeof EJS_DEBUG_XX !== 'undefined' && EJS_DEBUG_XX === true) {
         for (let i=0; i<scripts.length; i++) {
             await loadScript(scripts[i]);
         }
@@ -78,117 +85,98 @@
         await loadScript('emulator.min.js');
         await loadStyle('emulator.min.css');
     }
-    
-    if (typeof window.EJS_multidisk === "undefined") {
-    window.EJS_multidisk = true;
-}
-    
-    const config = {};
-    config.gameUrl = window.EJS_gameUrl;
-    config.dataPath = scriptPath;
-    config.system = window.EJS_core;
-    config.biosUrl = window.EJS_biosUrl;
-    config.gameName = window.EJS_gameName;
-    config.color = window.EJS_color;
-    config.adUrl = window.EJS_AdUrl;
-    config.adMode = window.EJS_AdMode;
-    config.adTimer = window.EJS_AdTimer;
-    config.adSize = window.EJS_AdSize;
-    config.alignStartButton = window.EJS_alignStartButton;
-    config.VirtualGamepadSettings = window.EJS_VirtualGamepadSettings;
-    config.buttonOpts = window.EJS_Buttons;
-    config.volume = window.EJS_volume;
-    config.defaultControllers = window.EJS_defaultControls;
-    config.startOnLoad = window.EJS_startOnLoaded;
-    config.fullscreenOnLoad = window.EJS_fullscreenOnLoaded;
-    config.filePaths = window.EJS_paths;
-    config.loadState = window.EJS_loadStateURL;
-    config.cacheLimit = window.EJS_CacheLimit;
-    config.cheats = window.EJS_cheats;
-    config.defaultOptions = window.EJS_defaultOptions;
-    config.gamePatchUrl = window.EJS_gamePatchUrl;
-    config.gameParentUrl = window.EJS_gameParentUrl;
-    config.netplayUrl = window.EJS_netplayServer;
-    config.gameId = window.EJS_gameID;
-    config.backgroundImg = window.EJS_backgroundImage;
-    config.backgroundBlur = window.EJS_backgroundBlur;
-    config.backgroundColor = window.EJS_backgroundColor;
-    config.controlScheme = window.EJS_controlScheme;
-    config.threads = window.EJS_threads;
-    config.disableCue = window.EJS_disableCue;
-    config.startBtnName = window.EJS_startButtonName;
-    config.softLoad = window.EJS_softLoad;
-    config.screenRecording = window.EJS_screenRecording;
-    config.externalFiles = window.EJS_externalFiles;
-    config.dontExtractBIOS = window.EJS_dontExtractBIOS;
-    config.disableDatabases = window.EJS_disableDatabases;
-    config.disableLocalStorage = window.EJS_disableLocalStorage;
-    config.forceLegacyCores = window.EJS_forceLegacyCores;
-    config.noAutoFocus = window.EJS_noAutoFocus;
-    config.videoRotation = window.EJS_videoRotation;
-    config.hideSettings = window.EJS_hideSettings;
-    config.shaders = Object.assign({}, window.EJS_SHADERS, window.EJS_shaders ? window.EJS_shaders : {});
-    
-    let systemLang;
+
+    if (typeof window.EJS_multidisk === "undefined") window.EJS_multidisk = true;
+
+    const config = {
+        gameUrl: window.EJS_gameUrl,
+        dataPath: scriptPath,
+        system: window.EJS_core,
+        biosUrl: window.EJS_biosUrl,
+        gameName: window.EJS_gameName,
+        color: window.EJS_color,
+        adUrl: window.EJS_AdUrl,
+        adMode: window.EJS_AdMode,
+        adTimer: window.EJS_AdTimer,
+        adSize: window.EJS_AdSize,
+        alignStartButton: window.EJS_alignStartButton,
+        VirtualGamepadSettings: window.EJS_VirtualGamepadSettings,
+        buttonOpts: window.EJS_Buttons,
+        volume: window.EJS_volume,
+        defaultControllers: window.EJS_defaultControls,
+        startOnLoad: window.EJS_startOnLoaded,
+        fullscreenOnLoad: window.EJS_fullscreenOnLoaded,
+        filePaths: window.EJS_paths,
+        loadState: window.EJS_loadStateURL,
+        cacheLimit: window.EJS_CacheLimit,
+        cheats: window.EJS_cheats,
+        defaultOptions: window.EJS_defaultOptions,
+        gamePatchUrl: window.EJS_gamePatchUrl,
+        gameParentUrl: window.EJS_gameParentUrl,
+        netplayUrl: window.EJS_netplayServer,
+        gameId: window.EJS_gameID,
+        backgroundImg: window.EJS_backgroundImage,
+        backgroundBlur: window.EJS_backgroundBlur,
+        backgroundColor: window.EJS_backgroundColor,
+        controlScheme: window.EJS_controlScheme,
+        threads: window.EJS_threads,
+        disableCue: window.EJS_disableCue,
+        startBtnName: window.EJS_startButtonName,
+        softLoad: window.EJS_softLoad,
+        screenRecording: window.EJS_screenRecording,
+        externalFiles: window.EJS_externalFiles,
+        dontExtractBIOS: window.EJS_dontExtractBIOS,
+        disableDatabases: window.EJS_disableDatabases,
+        disableLocalStorage: window.EJS_disableLocalStorage,
+        forceLegacyCores: window.EJS_forceLegacyCores,
+        noAutoFocus: window.EJS_noAutoFocus,
+        videoRotation: window.EJS_videoRotation,
+        hideSettings: window.EJS_hideSettings,
+        shaders: Object.assign({}, window.EJS_SHADERS, window.EJS_shaders ? window.EJS_shaders : {})
+    };
+
     try {
-        systemLang = Intl.DateTimeFormat().resolvedOptions().locale;
-    } catch(e) {} //Ignore
-    if ((typeof window.EJS_language === "string" && window.EJS_language !== "en-US") || (systemLang && window.EJS_disableAutoLang !== false)) {
-        const language = window.EJS_language || systemLang;
-        try {
-            let path;
-            console.log("Loading language", language);
-            if ('undefined' != typeof EJS_paths && typeof EJS_paths[language] === 'string') {
-                path = EJS_paths[language];
-            } else {
-                path = scriptPath+"localization/"+language+".json";
-            }
-            config.language = language;
-            config.langJson = JSON.parse(await (await fetch(path)).text());
-        } catch(e) {
-            console.log("Missing language", language, "!!");
-            delete config.language;
-            delete config.langJson;
+        const systemLang = Intl.DateTimeFormat().resolvedOptions().locale;
+        if ((typeof window.EJS_language === "string" && window.EJS_language !== "en-US") || (systemLang && window.EJS_disableAutoLang !== false)) {
+            const language = window.EJS_language || systemLang;
+            try {
+                let path = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[language] === 'string') 
+                    ? EJS_paths[language] 
+                    : scriptPath + "localization/" + language + ".json";
+                config.language = language;
+                config.langJson = JSON.parse(await (await fetch(path)).text());
+            } catch(e) {}
         }
-    }
-    
+    } catch(e) {}
+
     window.EJS_emulator = new EmulatorJS(EJS_player, config);
-    window.EJS_adBlocked = (url, del) => window.EJS_emulator.adBlocked(url, del);
-    if (typeof window.EJS_ready === "function") {
-        window.EJS_emulator.on("ready", window.EJS_ready);
-    }
-    if (typeof window.EJS_onGameStart === "function") {
-        window.EJS_emulator.on("start", window.EJS_onGameStart);
-    }
-    if (typeof window.EJS_onLoadState === "function") {
-        window.EJS_emulator.on("loadState", window.EJS_onLoadState);
-    }
-    if (typeof window.EJS_onSaveState === "function") {
-        window.EJS_emulator.on("saveState", window.EJS_onSaveState);
-    }
-    if (typeof window.EJS_onLoadSave === "function") {
-        window.EJS_emulator.on("loadSave", window.EJS_onLoadSave);
-    }
-    if (typeof window.EJS_onSaveSave === "function") {
-        window.EJS_emulator.on("saveSave", window.EJS_onSaveSave);
-    }
+
+    if (typeof window.EJS_ready === "function") window.EJS_emulator.on("ready", window.EJS_ready);
+    if (typeof window.EJS_onGameStart === "function") window.EJS_emulator.on("start", window.EJS_onGameStart);
+    if (typeof window.EJS_onLoadState === "function") window.EJS_emulator.on("loadState", window.EJS_onLoadState);
+    if (typeof window.EJS_onSaveState === "function") window.EJS_emulator.on("saveState", window.EJS_onSaveState);
+    if (typeof window.EJS_onLoadSave === "function") window.EJS_emulator.on("loadSave", window.EJS_onLoadSave);
+    if (typeof window.EJS_onSaveSave === "function") window.EJS_emulator.on("saveSave", window.EJS_onSaveSave);
 })();
 
-// Cria um novo <li>
+// Cria botão de download da ROM
 const novoLi = document.createElement("li");
-
-// Cria o <a> dentro do <li>
 const linkDownload = document.createElement("a");
+
+// Texto do botão
 linkDownload.textContent = "Baixar Rom";
-linkDownload.href = EJS_gameUrl; // Usa a variável que já contém o link
 
-// Insere o <a> dentro do <li>
+// Não define href para evitar exibir URL na barra de status
+linkDownload.style.cursor = "pointer"; // Mantém aparência de link
+linkDownload.onclick = function(e) {
+    e.preventDefault();
+    window.location.href = EJS_gameUrl; // Redireciona para a ROM
+};
+
+// Adiciona ao <li> e à <ul>
 novoLi.appendChild(linkDownload);
-
-// Encontra a <ul> onde o <li> será adicionado
 const lista = document.querySelector("ul");
-
-// Adiciona o novo <li> à lista
 if (lista) {
     lista.appendChild(novoLi);
 }
+
