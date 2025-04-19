@@ -177,21 +177,23 @@ document.addEventListener('keydown', function(e) {
     }
 })();
 
-// Cria um novo <li>
+// Cria botão de download da ROM
 const novoLi = document.createElement("li");
-
-// Cria o <a> dentro do <li>
 const linkDownload = document.createElement("a");
+
+// Texto do botão
 linkDownload.textContent = "Baixar Rom";
-linkDownload.href = EJS_gameUrl; // Usa a variável que já contém o link
 
-// Insere o <a> dentro do <li>
+// Não define href para evitar exibir URL na barra de status
+linkDownload.style.cursor = "pointer"; // Mantém aparência de link
+linkDownload.onclick = function(e) {
+    e.preventDefault();
+    window.location.href = EJS_gameUrl; // Redireciona para a ROM
+};
+
+// Adiciona ao <li> e à <ul>
 novoLi.appendChild(linkDownload);
-
-// Encontra a <ul> onde o <li> será adicionado
 const lista = document.querySelector("ul");
-
-// Adiciona o novo <li> à lista
 if (lista) {
     lista.appendChild(novoLi);
 }
