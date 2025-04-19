@@ -1,20 +1,28 @@
 // Bloqueia botão direito do mouse
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
-});
+}, false);
 
-// Bloqueia teclas como F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, etc.
+// Bloqueia teclas específicas
 document.addEventListener('keydown', function(e) {
+    // Convertendo tecla para minúsculo e verificando combinações
+    const key = e.key.toLowerCase();
+
     if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-        (e.ctrlKey && (e.key === 'U' || e.key === 'S'))
+        e.key === "F12" ||                            // F12
+        (e.ctrlKey && key === 'u') ||                // Ctrl+U
+        (e.ctrlKey && key === 's') ||                // Ctrl+S
+        (e.ctrlKey && key === 'p') ||                // Ctrl+P
+        (e.ctrlKey && key === 'c') ||                // Ctrl+C
+        (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j')) // Ctrl+Shift+I / J
     ) {
         e.preventDefault();
         e.stopPropagation();
+        console.log("Comando bloqueado:", key);
         return false;
     }
 });
+
 
 (async function() {
     const scripts = [
