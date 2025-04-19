@@ -1,3 +1,21 @@
+// Bloqueia botão direito do mouse
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// Bloqueia teclas como F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S, etc.
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+        (e.ctrlKey && (e.key === 'U' || e.key === 'S'))
+    ) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    }
+});
+
 (async function() {
     const scripts = [
         "emulator.js",
