@@ -39,27 +39,9 @@
         <h1>3x3 Eyes - Seima Kourinden - Super Nintendo</h1>
     </div>
 
-    <!-- Botão para fullscreen -->
-    <button id="fullscreen-btn" onclick="requestFullScreen()">Tela Cheia</button>
-
     <div id="game"></div>
 
     <script type="text/javascript">
-        function requestFullScreen() {
-            let elem = document.getElementById('game');
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) {
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            } else {
-                alert("Seu navegador não suporta fullscreen.");
-            }
-        }
-
         // Configurações do EmulatorJS
         EJS_player = '#game';
         EJS_core = 'snes';
