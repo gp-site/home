@@ -188,3 +188,28 @@ if (lista) {
     lista.appendChild(novoLi);
 }
 
+// Cria o botão
+    const fsBtn = document.createElement('button');
+    fsBtn.innerText = 'Tela Cheia';
+    fsBtn.id = 'fullscreen-btn';
+    fsBtn.onclick = requestFullScreen;
+
+    // Adiciona o botão ao body
+    document.body.appendChild(fsBtn);
+
+    // Função de fullscreen
+    function requestFullScreen() {
+        let elem = document.getElementById('game') || document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        } else {
+            alert("Seu navegador não suporta fullscreen.");
+        }
+    }
+
