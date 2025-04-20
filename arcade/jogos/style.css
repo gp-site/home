@@ -146,7 +146,7 @@ button#fullscreen-btn {
     font-size: 2vh !important;
     padding: 0.5vh !important;
     border: solid 0.5vh #003969 !important;
-    bottom: 4vh !important;
+    bottom: revert-layer !important;
     position: absolute !important;
     top: revert-layer !important;
 }
