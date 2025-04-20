@@ -86,6 +86,7 @@ button#fullscreen-btn {
     border: solid 0.5vh #003969 !important;
     top: 1.3vh !important;
     position: absolute !important;
+    bottom: revert-layer !important;
 }
 @media (max-width: 768px) { 
     
@@ -147,6 +148,7 @@ button#fullscreen-btn {
     border: solid 0.5vh #003969 !important;
     bottom: 4vh !important;
     position: absolute !important;
+    top: revert-layer !important;
 }
     
 }
