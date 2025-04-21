@@ -43,3 +43,13 @@ const lista = document.querySelector("ul");
 if (lista) {
     lista.appendChild(novoLi);
 }
+const loaderScript = document.createElement('script');
+    loaderScript.src = 'https://cdn.emulatorjs.org/latest/data/loader.js';
+    loaderScript.onload = function () {
+        console.log('Loader carregado com sucesso.');
+    };
+    loaderScript.onerror = function () {
+        console.error('Falha ao carregar o loader.');
+    };
+    document.body.appendChild(loaderScript);
+
