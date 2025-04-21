@@ -1,3 +1,9 @@
+ // Corrige o caminho EJS_pathtodata se estiver apontando para "latest", trocando para "stable"
+  if (typeof window.EJS_pathtodata === "string" && window.EJS_pathtodata.includes("latest")) {
+    window.EJS_pathtodata = window.EJS_pathtodata.replace("latest", "stable");
+    console.log("Corrigido EJS_pathtodata para:", window.EJS_pathtodata);
+  }
+
 // Bloqueia botão direito do mouse
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
@@ -20,20 +26,6 @@ document.addEventListener('keydown', function(e) {
         return false;
     }
 });
-
-const folderPath = (path) => path.substring(0, path.length - path.split('/').pop().length);
-
-    // ✅ Corrige EJS_pathtodata antes de usar
-    if (typeof window.EJS_pathtodata === "string" && window.EJS_pathtodata.includes("latest")) {
-        window.EJS_pathtodata = window.EJS_pathtodata.replace("latest", "stable");
-        console.log("Corrigido EJS_pathtodata para:", window.EJS_pathtodata);
-    }
-
-    let scriptPath = (typeof window.EJS_pathtodata === "string") 
-        ? window.EJS_pathtodata 
-        : folderPath((new URL(document.currentScript.src)).pathname);
-
-    if (!scriptPath.endsWith('/')) scriptPath += '/';
 
 // Cria botão de download da ROM
 const novoLi = document.createElement("li");
