@@ -204,19 +204,3 @@ if (lista) {
         document.body.appendChild(fsBtn);
     }
 
-    // Função de fullscreen
-    function requestFullScreen() {
-        let elem = document.getElementById('game') || document.documentElement;
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) {
-            elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
-        } else {
-            alert("Seu navegador não suporta fullscreen.");
-        }
-    }
-
