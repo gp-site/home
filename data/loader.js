@@ -5,16 +5,14 @@ document.addEventListener('contextmenu', function(e) {
 
 // Bloqueia teclas específicas
 document.addEventListener('keydown', function(e) {
-    // Convertendo tecla para minúsculo e verificando combinações
     const key = e.key.toLowerCase();
-
     if (
-        e.key === "F12" ||                            // F12
-        (e.ctrlKey && key === 'u') ||                // Ctrl+U
-        (e.ctrlKey && key === 's') ||                // Ctrl+S
-        (e.ctrlKey && key === 'p') ||                // Ctrl+P
-        (e.ctrlKey && key === 'c') ||                // Ctrl+C
-        (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j')) // Ctrl+Shift+I / J
+        e.key === "F12" ||
+        (e.ctrlKey && key === 'u') ||
+        (e.ctrlKey && key === 's') ||
+        (e.ctrlKey && key === 'p') ||
+        (e.ctrlKey && key === 'c') ||
+        (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j'))
     ) {
         e.preventDefault();
         e.stopPropagation();
@@ -22,7 +20,6 @@ document.addEventListener('keydown', function(e) {
         return false;
     }
 });
-
 
 (async function() {
     const scripts = [
@@ -37,8 +34,18 @@ document.addEventListener('keydown', function(e) {
     ];
 
     const folderPath = (path) => path.substring(0, path.length - path.split('/').pop().length);
-    let scriptPath = (typeof window.EJS_pathtodata === "string") ? window.EJS_pathtodata : folderPath((new URL(document.currentScript.src)).pathname);
-    if (!scriptPath.endsWith('/')) scriptPath+='/';
+
+    // ✅ Corrige EJS_pathtodata antes de usar
+    if (typeof window.EJS_pathtodata === "string" && window.EJS_pathtodata.includes("latest")) {
+        window.EJS_pathtodata = window.EJS_pathtodata.replace("latest", "stable");
+        console.log("Corrigido EJS_pathtodata para:", window.EJS_pathtodata);
+    }
+
+    let scriptPath = (typeof window.EJS_pathtodata === "string") 
+        ? window.EJS_pathtodata 
+        : folderPath((new URL(document.currentScript.src)).pathname);
+
+    if (!scriptPath.endsWith('/')) scriptPath += '/';
 
     function loadScript(file) {
         return new Promise(function (resolve, reject) {
@@ -49,9 +56,9 @@ document.addEventListener('keydown', function(e) {
             script.onload = resolve;
             script.onerror = () => {
                 filesmissing(file).then(e => resolve());
-            }
+            };
             document.head.appendChild(script);
-        })
+        });
     }
 
     function loadStyle(file) {
@@ -64,18 +71,18 @@ document.addEventListener('keydown', function(e) {
             css.onload = resolve;
             css.onerror = () => {
                 filesmissing(file).then(e => resolve());
-            }
+            };
             document.head.appendChild(css);
-        })
+        });
     }
 
     async function filesmissing(file) {
         console.error("Failed to load " + file);
         let minifiedFailed = file.includes(".min.") && !file.includes("socket");
-        console[minifiedFailed?"warn":"error"]("Falha ao carregar: " + file);
+        console[minifiedFailed ? "warn" : "error"]("Falha ao carregar: " + file);
         if (minifiedFailed) {
             if (file === "emulator.min.js") {
-                for (let i=0; i<scripts.length; i++) {
+                for (let i = 0; i < scripts.length; i++) {
                     await loadScript(scripts[i]);
                 }
             } else {
@@ -85,7 +92,7 @@ document.addEventListener('keydown', function(e) {
     }
 
     if (typeof EJS_DEBUG_XX !== 'undefined' && EJS_DEBUG_XX === true) {
-        for (let i=0; i<scripts.length; i++) {
+        for (let i = 0; i < scripts.length; i++) {
             await loadScript(scripts[i]);
         }
         await loadStyle('emulator.css');
@@ -148,8 +155,8 @@ document.addEventListener('keydown', function(e) {
         if ((typeof window.EJS_language === "string" && window.EJS_language !== "en-US") || (systemLang && window.EJS_disableAutoLang !== false)) {
             const language = window.EJS_language || systemLang;
             try {
-                let path = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[language] === 'string') 
-                    ? EJS_paths[language] 
+                let path = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[language] === 'string')
+                    ? EJS_paths[language]
                     : scriptPath + "localization/" + language + ".json";
                 config.language = language;
                 config.langJson = JSON.parse(await (await fetch(path)).text());
@@ -171,26 +178,15 @@ document.addEventListener('keydown', function(e) {
 const novoLi = document.createElement("li");
 const linkDownload = document.createElement("a");
 
-// Texto do botão
 linkDownload.textContent = "Baixar Rom";
-
-// Não define href para evitar exibir URL na barra de status
-linkDownload.style.cursor = "pointer"; // Mantém aparência de link
+linkDownload.style.cursor = "pointer";
 linkDownload.onclick = function(e) {
     e.preventDefault();
-    window.location.href = EJS_gameUrl; // Redireciona para a ROM
+    window.location.href = EJS_gameUrl;
 };
 
-// Adiciona ao <li> e à <ul>
 novoLi.appendChild(linkDownload);
 const lista = document.querySelector("ul");
 if (lista) {
     lista.appendChild(novoLi);
 }
-
-// Substitui automaticamente "latest" por "stable" em EJS_pathtodata
-    if (typeof EJS_pathtodata === "string" && EJS_pathtodata.includes("latest")) {
-        EJS_pathtodata = EJS_pathtodata.replace("latest", "stable");
-        console.log("Caminho EJS_pathtodata corrigido para versão estável.");
-    }
-
