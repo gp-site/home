@@ -75,19 +75,7 @@ h1 {
     width: 100%;
   margin-top:-0.5vh;
 }
-button#fullscreen-btn {
-    width: 26% !important;
-    margin-left: 37% !important;
-    margin-right: 37% !important;
-    background: #111;
-    color: #fff;
-    font-size: 1.6vh !important;
-    padding: 0.5vh !important;
-    border: solid 0.5vh #003969 !important;
-    top: 1.3vh !important;
-    position: absolute !important;
-    bottom: revert-layer !important;
-}
+
 @media (max-width: 768px) { 
     
     header {
@@ -136,19 +124,6 @@ button#fullscreen-btn {
     margin-left: 2%;
     margin-right: 2%;
     border: 0.5vh solid #003969;
-}
-    button#fullscreen-btn {
-    width: 26% !important;
-    margin-left: 37% !important;
-    margin-right: 37% !important;
-    background: #111;
-    color: #fff;
-    font-size: 2vh !important;
-    padding: 0.5vh !important;
-    border: solid 0.5vh #003969 !important;
-    bottom: revert-layer !important;
-    position: absolute !important;
-    top: revert-layer !important;
 }
     
 }
