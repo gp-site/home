@@ -188,4 +188,9 @@ if (lista) {
     lista.appendChild(novoLi);
 }
 
+// Substitui automaticamente "latest" por "stable" em EJS_pathtodata
+    if (typeof EJS_pathtodata === "string" && EJS_pathtodata.includes("latest")) {
+        EJS_pathtodata = EJS_pathtodata.replace("latest", "stable");
+        console.log("Caminho EJS_pathtodata corrigido para versão estável.");
+    }
 
