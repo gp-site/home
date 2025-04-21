@@ -188,19 +188,4 @@ if (lista) {
     lista.appendChild(novoLi);
 }
 
-// Verifica se o dispositivo é um iPhone ou iOS
-    function isIOS() {
-        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    }
-
-    if (isIOS()) {
-        // Cria o botão
-        const fsBtn = document.createElement('button');
-        fsBtn.innerText = 'Tela Cheia';
-        fsBtn.id = 'fullscreen-btn';
-        fsBtn.onclick = requestFullScreen;
-
-        // Adiciona o botão ao body
-        document.body.appendChild(fsBtn);
-    }
 
