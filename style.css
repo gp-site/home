@@ -140,7 +140,7 @@ button.next {
     top: 37vh;
     left: 10vh;
     transform: translateY(-50%);
-    width: 42vw;
+    width: 40vw;
     height: auto;
     z-index: 1;
     border: 0.5vh solid #003969;
