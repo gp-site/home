@@ -190,3 +190,26 @@ const lista = document.querySelector("ul");
 if (lista) {
     lista.appendChild(novoLi);
 }
+
+    // Detecta se é iPhone
+    const isIphone = /iPhone/i.test(navigator.userAgent);
+
+    if (isIphone) {
+        // Esconde o header e o h1
+        const header = document.querySelector('header');
+        const h1 = document.querySelector('h1');
+        const gameDiv = document.getElementById('game');
+
+        if (header) header.style.display = 'none';
+        if (h1) h1.style.display = 'none';
+
+        // Ajusta o game div para ocupar 100% da tela
+        if (gameDiv) {
+            gameDiv.style.width = '100vw';
+            gameDiv.style.height = '100vh';
+            gameDiv.style.position = 'fixed';
+            gameDiv.style.top = '0';
+            gameDiv.style.left = '0';
+            gameDiv.style.zIndex = '9999';
+        }
+    }
