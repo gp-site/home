@@ -191,19 +191,20 @@ if (lista) {
     lista.appendChild(novoLi);
 }
 
-    // Detecta se é iPhone
     const isIphone = /iPhone/i.test(navigator.userAgent);
 
     if (isIphone) {
-        // Esconde o header e o h1
-        const header = document.querySelector('header');
-        const h1 = document.querySelector('h1');
+        // Esconde o #top inteiro
+        const topDiv = document.getElementById('top');
+        if (topDiv) topDiv.style.display = 'none';
+
+        // Ajusta html e body para 100%
+        document.documentElement.style.height = '100%'; // html
+        document.body.style.height = '100%';             // body
+        document.body.style.margin = '0';                // tira margens
+
+        // Agora ajusta o game div
         const gameDiv = document.getElementById('game');
-
-        if (header) header.style.display = 'none';
-        if (h1) h1.style.display = 'none';
-
-        // Ajusta o game div para ocupar 100% da tela
         if (gameDiv) {
             gameDiv.style.width = '100vw';
             gameDiv.style.height = '100vh';
@@ -211,5 +212,7 @@ if (lista) {
             gameDiv.style.top = '0';
             gameDiv.style.left = '0';
             gameDiv.style.zIndex = '9999';
+            gameDiv.style.backgroundColor = '#000'; // opcional, pra fundo preto
         }
     }
+
