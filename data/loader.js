@@ -204,24 +204,20 @@ if (lista) {
         document.body.style.margin = '0';                // tira margens
 
         // Agora ajusta o game div
-       function ajustarGame() {
-    const gameDiv = document.getElementById('game');
-    if (gameDiv && window.innerWidth <= 768) { // Só aplica se for mobile
-        const realHeight = window.innerHeight + 'px'; // melhor que 100vh no iPhone
-        gameDiv.style.setProperty('width', '96%', 'important');
-        gameDiv.style.setProperty('height', realHeight, 'important');
-        gameDiv.style.setProperty('margin-top', '0vh', 'important');
-        gameDiv.style.setProperty('margin-left', '2%', 'important');
-        gameDiv.style.setProperty('margin-right', '2%', 'important');
-        gameDiv.style.setProperty('border', '0.5vh solid #003969', 'important');
-    }
+       const gameDiv = document.getElementById('game');
+if (gameDiv) {
+    // Remover o estilo com !important
+    gameDiv.style.removeProperty('height');
+    gameDiv.style.removeProperty('width');
+
+    // Aplicar novo estilo
+    gameDiv.style.setProperty('width', '100vw', 'important');
+    gameDiv.style.setProperty('height', '100vh', 'important');
+    gameDiv.style.position = 'fixed';
+    gameDiv.style.top = '0';
+    gameDiv.style.left = '0';
+    gameDiv.style.zIndex = '9999';
+    gameDiv.style.backgroundColor = '#000'; // fundo preto
 }
-
-// Chama quando carregar a página
-window.addEventListener('load', ajustarGame);
-
-// (Opcional) Chama também se a pessoa girar o celular
-window.addEventListener('resize', ajustarGame);
-
     }
 
