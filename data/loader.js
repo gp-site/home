@@ -190,38 +190,4 @@ const lista = document.querySelector("ul");
 if (lista) {
     lista.appendChild(novoLi);
 }
-// Função para detectar se é um dispositivo iOS
-    function isIOS() {
-        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    }
 
-    // Função para aplicar os estilos dinamicamente
-    function applyStyles() {
-        if (window.innerWidth <= 768) {
-            const gameElement = document.getElementById('game');
-            
-            if (isIOS()) {
-                // Modificar os estilos para dispositivos iOS
-                gameElement.style.width = '100vw';
-                gameElement.style.height = '100vh';
-                gameElement.style.marginTop = '0vh';
-                gameElement.style.marginLeft = '2%';
-                gameElement.style.marginRight = '2%';
-                gameElement.style.border = '0.5vh solid #003969';
-            } else {
-                // Caso não seja iOS, mantém o estilo original
-                gameElement.style.width = '96%';
-                gameElement.style.height = '75vh';
-                gameElement.style.marginTop = '0vh';
-                gameElement.style.marginLeft = '2%';
-                gameElement.style.marginRight = '2%';
-                gameElement.style.border = '0.5vh solid #003969';
-            }
-        }
-    }
-
-    // Aplicar os estilos ao carregar a página
-    window.addEventListener('load', applyStyles);
-
-    // Aplicar os estilos sempre que a janela for redimensionada
-    window.addEventListener('resize', applyStyles);
