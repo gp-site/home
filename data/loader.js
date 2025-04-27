@@ -204,23 +204,86 @@ if (lista) {
         document.body.style.margin = '0';                // tira margens
 
         // Agora ajusta o game div
-       function ajustarGame() {
-    const gameDiv = document.getElementById('game');
-    if (gameDiv && window.innerWidth <= 768) { // Verifica se a largura é <= 768px
-        // Remove a altura definida via CSS (se houver) e aplica a nova altura
-        gameDiv.style.removeProperty('height'); // Remove a altura fixa que vem do CSS (75vh)
-        
-        // Aplica a nova altura com !important
-        const realHeight = window.innerHeight + 'px'; // Melhor que 100vh no iPhone
-        gameDiv.style.setProperty('height', realHeight, 'important');
+       // Função para verificar se o sistema é iOS
+function isIOS() {
+    return /iPhone|iPad|iPod/.test(navigator.userAgent);
+}
+
+// Função para adicionar ou alterar as regras CSS dependendo do dispositivo
+function atualizarCSS() {
+    const isIos = isIOS();
+    const styleSheet = document.styleSheets[0]; // Acessa o primeiro stylesheet da página
+
+    // Limpa as regras antigas para evitar múltiplas inserções
+    // Aqui estamos só limpando as regras relacionadas ao @media max-width: 768px
+    const mediaRuleIndex = [...styleSheet.cssRules].findIndex(rule => rule.media && rule.media.mediaText === "(max-width: 768px)");
+    if (mediaRuleIndex !== -1) {
+        styleSheet.deleteRule(mediaRuleIndex); // Remove a regra existente
+    }
+
+    // Adiciona as novas regras de acordo com o iOS ou não
+    if (window.innerWidth <= 768) { // Verifica se é dispositivo móvel
+        if (isIos) {
+            // Se for iOS no mobile, aplica 100vh e 100vw
+            styleSheet.insertRule(`
+                @media (max-width: 768px) {
+                    #game {
+                        width: 100vw !important;
+                        height: 100vh !important;
+                        margin-top: 0vh;
+                        margin-left: 0;
+                        margin-right: 0;
+                        border: 0.5vh solid #003969;
+                    }
+                }
+            `, styleSheet.cssRules.length);
+        } else {
+            // Se não for iOS no mobile, aplica 75vh
+            styleSheet.insertRule(`
+                @media (max-width: 768px) {
+                    #game {
+                        width: 96%;
+                        height: 75vh !important;
+                        margin-top: 0vh;
+                        margin-left: 2%;
+                        margin-right: 2%;
+                        border: 0.5vh solid #003969;
+                    }
+                }
+            `, styleSheet.cssRules.length);
+        }
+    } else {
+        // Para o desktop (fora do @media), verifica se é iOS ou não
+        if (isIos) {
+            // Se for iOS no desktop, aplica 100vw e 100vh
+            styleSheet.insertRule(`
+                #game {
+                    width: 100vw !important;
+                    height: 100vh !important;
+                    margin-top: 0vh;
+                    margin-left: 0;
+                    margin-right: 0;
+                    border: 0.5vh solid #003969;
+                }
+            `, styleSheet.cssRules.length);
+        } else {
+            // Se não for iOS no desktop, aplica 64vh
+            styleSheet.insertRule(`
+                #game {
+                    width: 100%;
+                    height: 64vh !important;
+                    margin-top: 0vh;
+                    margin-left: 0;
+                    margin-right: 0;
+                    border: 0.5vh solid #003969;
+                }
+            `, styleSheet.cssRules.length);
+        }
     }
 }
 
-// Chama a função quando a página carregar
-window.addEventListener('load', ajustarGame);
+// Chama a função de atualização de CSS quando a página carrega
+window.addEventListener('load', atualizarCSS);
 
-// Chama a função sempre que o usuário redimensionar a janela (caso ele mude a orientação do celular)
-window.addEventListener('resize', ajustarGame);
-
-    }
-
+// Chama a função novamente caso o usuário redimensione a janela
+window.addEventListener('resize', atualizarCSS);
