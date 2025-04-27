@@ -191,38 +191,4 @@ if (lista) {
     lista.appendChild(novoLi);
 }
 
-    // Verifica se a página foi recarregada
-    if (!sessionStorage.getItem('reloaded')) {
-        // Marca a página como recarregada
-        sessionStorage.setItem('reloaded', 'true');
-
-        // Função para detectar se é um dispositivo iOS
-        function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        }
-
-        // Função para alterar dinamicamente o link da folha de estilo
-        function changeStylesheet() {
-            const head = document.getElementsByTagName('head')[0]; // Obtém o elemento <head> da página
-            const link = document.createElement('link'); // Cria um novo elemento <link>
-            link.rel = 'stylesheet'; // Define o atributo 'rel' como 'stylesheet'
-
-            if (isIOS()) {
-                // Se for iOS, carrega o style2.css
-                link.href = 'style2.css';
-            } else {
-                // Se não for iOS, carrega o style.css
-                link.href = 'style.css';
-            }
-
-            // Adiciona o link ao <head> imediatamente, antes de qualquer outro conteúdo
-            head.appendChild(link);
-
-            // Após a alteração do link, recarrega a página para aplicar o estilo correto
-            location.reload();
-        }
-
-        // Usa o evento 'DOMContentLoaded' para garantir que o script execute o mais rápido possível
-        document.addEventListener('DOMContentLoaded', changeStylesheet);
-    }
 
