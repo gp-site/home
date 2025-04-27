@@ -205,14 +205,14 @@ if (lista) {
 
         // Agora ajusta o game div
         const gameDiv = document.getElementById('game');
-        if (gameDiv) {
-            gameDiv.style.setProperty('width', '100vw', 'important');
-            gameDiv.style.setProperty('height', '100vh', 'important');
-            gameDiv.style.position = 'fixed';
-            gameDiv.style.top = '0';
-            gameDiv.style.left = '0';
-            gameDiv.style.zIndex = '9999';
-            gameDiv.style.backgroundColor = '#000'; // opcional, pra fundo preto
-        }
+if (gameDiv) {
+    gameDiv.style.setProperty('width', '100vw', 'important');
+    gameDiv.style.setProperty('height', '100vh', 'important');
+    gameDiv.style.setProperty('position', 'fixed');
+    gameDiv.style.setProperty('top', '0');
+    gameDiv.style.setProperty('left', '0');
+    gameDiv.style.setProperty('z-index', '9999');
+    gameDiv.style.setProperty('background-color', '#000'); // opcional
+}
     }
 
