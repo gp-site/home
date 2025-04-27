@@ -204,20 +204,23 @@ if (lista) {
         document.body.style.margin = '0';                // tira margens
 
         // Agora ajusta o game div
-       const gameDiv = document.getElementById('game');
-if (gameDiv) {
-    // Remover o estilo com !important
-    gameDiv.style.removeProperty('height');
-    gameDiv.style.removeProperty('width');
-
-    // Aplicar novo estilo
-    gameDiv.style.setProperty('width', '100vw', 'important');
-    gameDiv.style.setProperty('height', '100vh', 'important');
-    gameDiv.style.position = 'fixed';
-    gameDiv.style.top = '0';
-    gameDiv.style.left = '0';
-    gameDiv.style.zIndex = '9999';
-    gameDiv.style.backgroundColor = '#000'; // fundo preto
+       function ajustarGame() {
+    const gameDiv = document.getElementById('game');
+    if (gameDiv && window.innerWidth <= 768) { // Verifica se a largura é <= 768px
+        // Remove a altura definida via CSS (se houver) e aplica a nova altura
+        gameDiv.style.removeProperty('height'); // Remove a altura fixa que vem do CSS (75vh)
+        
+        // Aplica a nova altura com !important
+        const realHeight = window.innerHeight + 'px'; // Melhor que 100vh no iPhone
+        gameDiv.style.setProperty('height', realHeight, 'important');
+    }
 }
+
+// Chama a função quando a página carregar
+window.addEventListener('load', ajustarGame);
+
+// Chama a função sempre que o usuário redimensionar a janela (caso ele mude a orientação do celular)
+window.addEventListener('resize', ajustarGame);
+
     }
 
