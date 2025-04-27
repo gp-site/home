@@ -190,7 +190,7 @@ const lista = document.querySelector("ul");
 if (lista) {
     lista.appendChild(novoLi);
 }
-<script>
+
     // Verifica se a página foi recarregada
     if (!sessionStorage.getItem('reloaded')) {
         // Marca a página como recarregada
@@ -225,5 +225,4 @@ if (lista) {
         // Usa o evento 'DOMContentLoaded' para garantir que o script execute o mais rápido possível
         document.addEventListener('DOMContentLoaded', changeStylesheet);
     }
-</script>
 
