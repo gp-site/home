@@ -206,8 +206,8 @@ if (lista) {
         // Agora ajusta o game div
         const gameDiv = document.getElementById('game');
         if (gameDiv) {
-            gameDiv.style.width = '100vw !important';
-            gameDiv.style.height = '100vh !important';
+            gameDiv.style.setProperty('width', '100vw', 'important');
+            gameDiv.style.setProperty('height', '100vh', 'important');
             gameDiv.style.position = 'fixed';
             gameDiv.style.top = '0';
             gameDiv.style.left = '0';
