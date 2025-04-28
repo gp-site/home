@@ -1,8 +1,10 @@
+// ============================
 // Bloqueia botão direito do mouse
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 }, false);
 
+// ============================
 // Bloqueia teclas específicas
 document.addEventListener('keydown', function(e) {
     const key = e.key.toLowerCase();
@@ -21,7 +23,59 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-(async function() {
+// ============================
+// Detecta iOS e altera ID e oculta o topo
+function isIOS() {
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+// Executa quando DOM estiver pronto
+document.addEventListener('DOMContentLoaded', async function() {
+    let playerID = '#game'; // padrão
+
+    if (isIOS()) {
+        var gameDiv = document.getElementById('game');
+        if (gameDiv) {
+            gameDiv.id = 'game2'; // Altera o ID para game2
+            playerID = '#game2';
+        }
+
+        var topDiv = document.getElementById('top');
+        if (topDiv) {
+            topDiv.style.display = 'none'; // Oculta o topo
+        }
+    }
+
+    // ============================
+    // Cria botão de download da ROM
+    const novoLi = document.createElement("li");
+    const linkDownload = document.createElement("a");
+
+    linkDownload.textContent = "Baixar Rom";
+    linkDownload.style.cursor = "pointer";
+    linkDownload.onclick = function(e) {
+        e.preventDefault();
+        window.location.href = window.EJS_gameUrl;
+    };
+
+    novoLi.appendChild(linkDownload);
+    const lista = document.querySelector("ul");
+    if (lista) {
+        lista.appendChild(novoLi);
+    }
+
+    // ============================
+    // Configuração EmulatorJS
+    window.EJS_player = playerID;
+    window.EJS_core = 'arcade';
+    window.EJS_lightgun = false;
+    window.EJS_color = "#0097c4";
+    window.EJS_backgroundColor = "#000";
+    window.EJS_biosUrl = '';
+    window.EJS_gameUrl = 'https://gam.onl/user/arcade/roms/1942.zip';
+    window.EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
+    window.EJS_startOnLoaded = true;
+
     const scripts = [
         "emulator.js",
         "nipplejs.js",
@@ -35,7 +89,6 @@ document.addEventListener('keydown', function(e) {
 
     const folderPath = (path) => path.substring(0, path.length - path.split('/').pop().length);
 
-    // ✅ Corrige EJS_pathtodata antes de usar
     if (typeof window.EJS_pathtodata === "string" && window.EJS_pathtodata.includes("latest")) {
         window.EJS_pathtodata = window.EJS_pathtodata.replace("latest", "stable");
         console.log("Corrigido EJS_pathtodata para:", window.EJS_pathtodata);
@@ -164,7 +217,7 @@ document.addEventListener('keydown', function(e) {
         }
     } catch(e) {}
 
-    window.EJS_emulator = new EmulatorJS(EJS_player, config);
+    window.EJS_emulator = new EmulatorJS(playerID, config);
 
     if (typeof window.EJS_ready === "function") window.EJS_emulator.on("ready", window.EJS_ready);
     if (typeof window.EJS_onGameStart === "function") window.EJS_emulator.on("start", window.EJS_onGameStart);
@@ -172,53 +225,4 @@ document.addEventListener('keydown', function(e) {
     if (typeof window.EJS_onSaveState === "function") window.EJS_emulator.on("saveState", window.EJS_onSaveState);
     if (typeof window.EJS_onLoadSave === "function") window.EJS_emulator.on("loadSave", window.EJS_onLoadSave);
     if (typeof window.EJS_onSaveSave === "function") window.EJS_emulator.on("saveSave", window.EJS_onSaveSave);
-})();
-
-// Cria botão de download da ROM
-const novoLi = document.createElement("li");
-const linkDownload = document.createElement("a");
-
-linkDownload.textContent = "Baixar Rom";
-linkDownload.style.cursor = "pointer";
-linkDownload.onclick = function(e) {
-    e.preventDefault();
-    window.location.href = EJS_gameUrl;
-};
-
-novoLi.appendChild(linkDownload);
-const lista = document.querySelector("ul");
-if (lista) {
-    lista.appendChild(novoLi);
-}
-
-function isIOS() {
-        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var playerID = '#game'; // padrão
-
-        if (isIOS()) {
-            var gameDiv = document.getElementById('game');
-            if (gameDiv) {
-                gameDiv.id = 'game2'; // altera o id no DOM
-                playerID = '#game2';  // ajusta o seletor
-            }
-        }
-
-        // Agora configurações do EmulatorJS usando o id certo
-        window.EJS_player = playerID;
-        window.EJS_core = 'arcade';
-        window.EJS_lightgun = false;
-        window.EJS_color = "#0097c4";
-        window.EJS_backgroundColor = "#000";
-        window.EJS_biosUrl = '';
-        window.EJS_gameUrl = 'https://gam.onl/user/arcade/roms/1942.zip';
-        window.EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
-        window.EJS_startOnLoaded = true;
-
-        // Só depois de tudo configurado carrega o loader.js
-        var script = document.createElement('script');
-        script.src = '../../data/loader.js';
-        document.body.appendChild(script);
-    });
+});
