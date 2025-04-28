@@ -14,27 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Detect iOS device
     const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
 
-    // If it's iOS, don't autoplay the video
-    function changeVideo(videoUrl, shouldAutoplay = true) {
-        if (videoUrl) {
-            videoSource.src = videoUrl;
-            videoSource.type = 'video/mp4';
-            videoPlayer.innerHTML = '';
-            videoPlayer.appendChild(videoSource);
-            videoPlayer.load();
-
-            // Only autoplay if it's not an iOS device
-            if (isIOS && shouldAutoplay) {
-                // Show a play button or alternative UI on iOS devices
-                videoPlayer.innerHTML = `<button onclick="playVideo('${videoUrl}')">Play Video</button>`;
-            } else {
-                videoPlayer.play();
-            }
-        } else {
-            videoPlayer.innerHTML = '';
-        }
-    }
-
+    // Play video when user clicks
     function playVideo(videoUrl) {
         videoSource.src = videoUrl;
         videoSource.type = 'video/mp4';
@@ -44,6 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
         videoPlayer.play();
     }
 
+    // Change video with autoplay control
+    function changeVideo(videoUrl, shouldAutoplay = true) {
+        if (videoUrl) {
+            videoSource.src = videoUrl;
+            videoSource.type = 'video/mp4';
+            videoPlayer.innerHTML = '';
+            videoPlayer.appendChild(videoSource);
+            videoPlayer.load();
+
+            // Autoplay control
+            if (isIOS) {
+                // On iOS, show a play button to start the video manually
+                videoPlayer.innerHTML = `<button onclick="playVideo('${videoUrl}')">Play Video</button>`;
+            } else if (shouldAutoplay) {
+                // On other devices, autoplay the video
+                videoPlayer.play();
+            }
+        } else {
+            videoPlayer.innerHTML = '';
+        }
+    }
+
+    // Move to a specific carousel index
     function moveToIndex(index, shouldUpdateVideo = true) {
         currentIndex = index;
         const offset = -currentIndex * 100;
@@ -52,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (shouldUpdateVideo && carouselItems[currentIndex]) {
             const currentActiveLink = carouselItems[currentIndex].querySelector('a');
             if (currentActiveLink && currentActiveLink.getAttribute('data-video')) {
-                changeVideo(currentActiveLink.getAttribute('data-video'));
+                changeVideo(currentActiveLink.getAttribute('data-video'), !isIOS);  // Prevent autoplay on iOS
             } else {
                 changeVideo('');
             }
@@ -66,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Handle navigation link clicks
     navLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             const videoUrl = this.getAttribute('data-video');
@@ -73,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Handle carousel link clicks
     carouselLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             const videoUrl = this.getAttribute('data-video');
@@ -85,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Handle carousel navigation buttons
     nextButton.addEventListener('click', () => {
         currentIndex++;
         if (currentIndex === totalItems) {
