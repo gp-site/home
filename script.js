@@ -11,23 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalItems = carouselItems.length;
     let currentIndex = 0;
 
-    // Detect iOS device
-    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
-
-    // Change video source and load, without autoplay
     function changeVideo(videoUrl) {
         if (videoUrl) {
             videoSource.src = videoUrl;
             videoSource.type = 'video/mp4';
             videoPlayer.innerHTML = '';
             videoPlayer.appendChild(videoSource);
-            videoPlayer.load();  // Load the video without autoplaying
+            videoPlayer.load();
+            videoPlayer.play();
         } else {
-            videoPlayer.innerHTML = ''; // Clear if no video URL
+            videoPlayer.innerHTML = '';
         }
     }
 
-    // Move to a specific carousel index
     function moveToIndex(index, shouldUpdateVideo = true) {
         currentIndex = index;
         const offset = -currentIndex * 100;
@@ -36,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (shouldUpdateVideo && carouselItems[currentIndex]) {
             const currentActiveLink = carouselItems[currentIndex].querySelector('a');
             if (currentActiveLink && currentActiveLink.getAttribute('data-video')) {
-                changeVideo(currentActiveLink.getAttribute('data-video'));  // No autoplay for iOS or any device
+                changeVideo(currentActiveLink.getAttribute('data-video'));
             } else {
                 changeVideo('');
             }
@@ -46,23 +42,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (carouselItems.length > 0) {
         const firstLink = carouselItems[0].querySelector('a');
         if (firstLink && firstLink.getAttribute('data-video')) {
-            changeVideo(firstLink.getAttribute('data-video'));  // No autoplay for iOS or any device
+            changeVideo(firstLink.getAttribute('data-video'));
         }
     }
 
-    // Handle navigation link clicks
     navLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             const videoUrl = this.getAttribute('data-video');
-            changeVideo(videoUrl);  // No autoplay for iOS or any device
+            changeVideo(videoUrl);
         });
     });
 
-    // Handle carousel link clicks
     carouselLinks.forEach(link => {
         link.addEventListener('click', function(event) {
+            // event.preventDefault(); <---- REMOVA ESTA LINHA
             const videoUrl = this.getAttribute('data-video');
-            changeVideo(videoUrl);  // No autoplay for iOS or any device
+            changeVideo(videoUrl);
             carouselItems.forEach((item, index) => {
                 if (item.contains(this)) {
                     moveToIndex(index);
@@ -71,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle carousel navigation buttons
     nextButton.addEventListener('click', () => {
         currentIndex++;
         if (currentIndex === totalItems) {
@@ -102,5 +96,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (carouselItems.length > 0) {
         moveToIndex(0);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Detect iOS device
+    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+    // Se for iOS, remover o atributo autoplay dos vídeos
+    if (isIOS) {
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.removeAttribute('autoplay');
+        });
     }
 });
