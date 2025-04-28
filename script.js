@@ -103,11 +103,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Detect iOS device
     const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
 
-    // Se for iOS, remover o atributo autoplay dos vídeos
+    // Se for iOS, prevenimos a tela cheia no vídeo
     if (isIOS) {
         const videos = document.querySelectorAll('video');
+        
         videos.forEach(video => {
-            video.removeAttribute('autoplay');
+            // Previne a tela cheia ao clicar no vídeo
+            video.addEventListener('click', (event) => {
+                if (document.fullscreenElement || document.webkitFullscreenElement) {
+                    // Se o vídeo estiver em tela cheia, sai dela
+                    document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen();
+                }
+            });
         });
     }
 });
