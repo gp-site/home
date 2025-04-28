@@ -191,4 +191,23 @@ if (lista) {
     lista.appendChild(novoLi);
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Função para detectar iOS
+    function isIOS() {
+        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    if (isIOS()) {
+        // Ocultar o #game
+        var gameDiv = document.getElementById('game');
+        if (gameDiv) {
+            gameDiv.style.display = 'none';
+        }
+
+        // Adicionar o #game2
+        var game2Div = document.createElement('div');
+        game2Div.id = 'game2';
+        document.body.appendChild(game2Div); // adiciona no final do body (pode mudar o local se quiser)
+    }
+});
 
