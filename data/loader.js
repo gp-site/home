@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isIOS()) {
         var gameDiv = document.getElementById('game');
         if (gameDiv) {
-            gameDiv.id = 'game2'; // Muda o id de 'game' para 'game2'
+            gameDiv.id = gameDiv.id + '2'; // Apenas acrescenta o "2"
         }
     }
 });
