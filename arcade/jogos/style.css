@@ -72,11 +72,11 @@ h1 {
     border: 0.5vh solid #003969;
 }
 #game2 {
-    width: 64%;
+    width: 100vw;
     height: 100vh !important;
-    margin-top: 2vh;
-    margin-left: 18%;
-    margin-right: 18%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
     border: 0.5vh solid #003969;
 }
 #top {
