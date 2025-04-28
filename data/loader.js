@@ -1,10 +1,8 @@
-// ============================
 // Bloqueia botão direito do mouse
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 }, false);
 
-// ============================
 // Bloqueia teclas específicas
 document.addEventListener('keydown', function(e) {
     const key = e.key.toLowerCase();
@@ -23,59 +21,29 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// ============================
-// Detecta iOS e altera ID e oculta o topo
-function isIOS() {
-    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
+(async function() {
+    // Detecta iOS
+    function isIOS() {
+        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
 
-// Executa quando DOM estiver pronto
-document.addEventListener('DOMContentLoaded', async function() {
-    let playerID = '#game'; // padrão
-
+    // Se for iOS, altera o ID do game e oculta o topo
     if (isIOS()) {
-        var gameDiv = document.getElementById('game');
+        const gameDiv = document.getElementById('game');
         if (gameDiv) {
-            gameDiv.id = 'game2'; // Altera o ID para game2
-            playerID = '#game2';
+            gameDiv.id = gameDiv.id + '2'; // Muda para "game2"
         }
-
-        var topDiv = document.getElementById('top');
+        const topDiv = document.getElementById('top');
         if (topDiv) {
             topDiv.style.display = 'none'; // Oculta o topo
         }
+        // Atualiza o EJS_player para o novo ID
+        if (typeof window.EJS_player === 'string' && window.EJS_player.includes('game')) {
+            window.EJS_player = window.EJS_player + '2';
+        }
     }
 
-    // ============================
-    // Cria botão de download da ROM
-    const novoLi = document.createElement("li");
-    const linkDownload = document.createElement("a");
-
-    linkDownload.textContent = "Baixar Rom";
-    linkDownload.style.cursor = "pointer";
-    linkDownload.onclick = function(e) {
-        e.preventDefault();
-        window.location.href = window.EJS_gameUrl;
-    };
-
-    novoLi.appendChild(linkDownload);
-    const lista = document.querySelector("ul");
-    if (lista) {
-        lista.appendChild(novoLi);
-    }
-
-    // ============================
-    // Configuração EmulatorJS
-    window.EJS_player = playerID;
-    window.EJS_core = 'arcade';
-    window.EJS_lightgun = false;
-    window.EJS_color = "#0097c4";
-    window.EJS_backgroundColor = "#000";
-    window.EJS_biosUrl = '';
-    window.EJS_gameUrl = 'https://gam.onl/user/arcade/roms/1942.zip';
-    window.EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
-    window.EJS_startOnLoaded = true;
-
+    // Scripts do emulador
     const scripts = [
         "emulator.js",
         "nipplejs.js",
@@ -101,14 +69,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (!scriptPath.endsWith('/')) scriptPath += '/';
 
     function loadScript(file) {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             let script = document.createElement('script');
             script.src = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[file] === 'string')
                 ? EJS_paths[file]
                 : (file.endsWith("emulator.min.js") ? scriptPath + file : scriptPath + "src/" + file);
             script.onload = resolve;
             script.onerror = () => {
-                filesmissing(file).then(e => resolve());
+                filesmissing(file).then(() => resolve());
             };
             document.head.appendChild(script);
         });
@@ -123,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 : scriptPath + file;
             css.onload = resolve;
             css.onerror = () => {
-                filesmissing(file).then(e => resolve());
+                filesmissing(file).then(() => resolve());
             };
             document.head.appendChild(css);
         });
@@ -217,7 +185,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     } catch(e) {}
 
-    window.EJS_emulator = new EmulatorJS(playerID, config);
+    window.EJS_emulator = new EmulatorJS(window.EJS_player, config);
 
     if (typeof window.EJS_ready === "function") window.EJS_emulator.on("ready", window.EJS_ready);
     if (typeof window.EJS_onGameStart === "function") window.EJS_emulator.on("start", window.EJS_onGameStart);
@@ -225,4 +193,25 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (typeof window.EJS_onSaveState === "function") window.EJS_emulator.on("saveState", window.EJS_onSaveState);
     if (typeof window.EJS_onLoadSave === "function") window.EJS_emulator.on("loadSave", window.EJS_onLoadSave);
     if (typeof window.EJS_onSaveSave === "function") window.EJS_emulator.on("saveSave", window.EJS_onSaveSave);
-});
+})();
+
+// Cria botão de download da ROM
+const novoLi = document.createElement("li");
+const linkDownload = document.createElement("a");
+
+linkDownload.textContent = "Baixar Rom";
+linkDownload.style.cursor = "pointer";
+linkDownload.onclick = function(e) {
+    e.preventDefault();
+    if (typeof window.EJS_gameUrl === 'string') {
+        window.location.href = window.EJS_gameUrl;
+    } else {
+        console.error("EJS_gameUrl não definido!");
+    }
+};
+
+novoLi.appendChild(linkDownload);
+const lista = document.querySelector("ul");
+if (lista) {
+    lista.appendChild(novoLi);
+}
