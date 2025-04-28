@@ -191,15 +191,34 @@ if (lista) {
     lista.appendChild(novoLi);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    function isIOS() {
+function isIOS() {
         return /iPhone|iPad|iPod/i.test(navigator.userAgent);
     }
 
-    if (isIOS()) {
-        var gameDiv = document.getElementById('game');
-        if (gameDiv) {
-            gameDiv.id = gameDiv.id + '2'; // Apenas acrescenta o "2"
+    document.addEventListener('DOMContentLoaded', function() {
+        var playerID = '#game'; // padrão
+
+        if (isIOS()) {
+            var gameDiv = document.getElementById('game');
+            if (gameDiv) {
+                gameDiv.id = 'game2'; // altera o id no DOM
+                playerID = '#game2';  // ajusta o seletor
+            }
         }
-    }
-});
+
+        // Agora configurações do EmulatorJS usando o id certo
+        window.EJS_player = playerID;
+        window.EJS_core = 'arcade';
+        window.EJS_lightgun = false;
+        window.EJS_color = "#0097c4";
+        window.EJS_backgroundColor = "#000";
+        window.EJS_biosUrl = '';
+        window.EJS_gameUrl = 'https://gam.onl/user/arcade/roms/1942.zip';
+        window.EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
+        window.EJS_startOnLoaded = true;
+
+        // Só depois de tudo configurado carrega o loader.js
+        var script = document.createElement('script');
+        script.src = '../../data/loader.js';
+        document.body.appendChild(script);
+    });
