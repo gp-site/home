@@ -100,21 +100,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Detect iOS device
-    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+            const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
 
-    // Se for iOS, prevenimos a tela cheia no vídeo
-    if (isIOS) {
-        const videos = document.querySelectorAll('video');
-        
-        videos.forEach(video => {
-            // Previne a tela cheia ao clicar no vídeo
-            video.addEventListener('click', (event) => {
-                if (document.fullscreenElement || document.webkitFullscreenElement) {
-                    // Se o vídeo estiver em tela cheia, sai dela
-                    document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen();
-                }
-            });
+            const video = document.getElementById('consoleVideo');
+            const videoSource = document.createElement('source');
+
+            // Detecta que não é iOS e começa a reprodução
+            if (!isIOS) {
+                // Configura o vídeo
+                videoSource.src = "videos/arcade.mp4";  // exemplo de video que você quer exibir
+                videoSource.type = "video/mp4";
+                video.innerHTML = '';  // Limpa qualquer conteúdo anterior
+                video.appendChild(videoSource);
+                video.load();
+                video.play();
+            }
+
+            // Opcional: Pause o vídeo imediatamente no iOS se necessário
+            if (isIOS) {
+                video.pause();
+            }
         });
-    }
-});
