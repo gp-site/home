@@ -21,6 +21,7 @@ body {
     padding: 0 2vh;
     width: 100%;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 0.5vh;
 }
 
 header .logo {
@@ -55,79 +56,35 @@ h1 {
     margin-bottom: 2vh;
     font-size: 4vh;
     color: white;
-    font-weight: 600;
     font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     letter-spacing: 0.01vh;
     margin-top: 1vh;
     text-align: center;
 }
 
-#azlist li a {
-    text-decoration: none;
-    color: #0f0;
-    font-size: 4vh;
-}
-#azlist li:hover {
-    background: #003969;
-}
-#azlist {
-    list-style: none;
-    padding: 0;
+#game {
     width: 64%;
-    height: 65vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    border: 0.5vh solid #003969;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 1vh;
-    scrollbar-width: none;
+    height: 65vh !important;
+    margin-top: 2vh;
     margin-left: 18%;
     margin-right: 18%;
-    text-align: center;
-    scrollbar-width: thin;
-    scrollbar-color: #003969 #000;
-    background-size: cover;
-    background-color:black;
-    position: relative;
-    background-image: url('../imagem/fundoazlist.gif');
-    background-position: center;
-    background-size: cover;
+    border: 0.5vh solid #003969;
 }
-    
-#azlist li {
-    padding: 1.5vh;
-    transition: background 0.3s, transform 0.2s;
+#game2 {
+    width: 100vw;
+    height: 100vh !important;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border: 0.5vh solid #003969;
 }
-#azlist::-webkit-scrollbar {
-    width: 8px;
-}
-#azlist::-webkit-scrollbar-track {
-    background: #000;
-}
-#azlist::-webkit-scrollbar-thumb {
-    background: #ff0000;
-    border-radius: 4px;
-}
-input#searchInput {
-    width: 56%;
-    margin-left: 22%;
-    margin-right: 22%;
-    background-color: transparent;
-    border: solid 0.05vh #999;
-    margin-bottom: 1vh;
-    background: #222;
-    text-align: center;
-    font-size: 3vh;
-    font-family: 'Montserrat', sans-serif;
-    color: #999;
-    padding: 1vh;
-    border-radius: 0.5vh;
-    z-index: 1000;
-    position: absolute;
-    margin-top: -15.2vh;
+#top {
+    width: 100%;
+  margin-top:-0.5vh;
 }
 
-    @media (max-width: 768px) { 
+@media (max-width: 768px) { 
     
     header {
         display: flex;
@@ -138,79 +95,51 @@ input#searchInput {
         padding: 0 1vh;
         width: 100%;
     }
-
+    
     header nav ul li a {
         color: white;
         text-decoration: none;
         font-family: 'Montserrat', sans-serif;
-        font-size: 2vh;
-        margin-right: 1vh;
-        margin-left: 1vh;
+        font-size: 1.6vh;
+        margin-right: 0vh;
+        margin-left: 0vh;
         margin-top: 2vh;
     }
 
-    header .logo {
-    height: 4vh;
-        
+     header .logo {
+    height: 4vh;   
    }
-   h1 {
-    margin-bottom: 2vh;
-    font-size: 2.5vh;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.01vh;
-    text-align: center;
-    margin-top: 2vh;
+      button {
+        margin-left: 0vh !important;
+        padding: 0.4vh 0.7vh !important;
+        border-radius: 0.5vh !important;
+        font-size: 1.6vh !important;
     }
-        
-  #azlist {
-    list-style: none;
-    padding: 0;
+    h1 {
+        margin-bottom: 2vh;
+        font-size: 2.5vh;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.01vh;
+        text-align: center;
+        margin-top: 2vh;
+    }
+#game {
     width: 96%;
-    height: 70.7vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    border: 0.5vh solid #003969;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 1vh;
-    scrollbar-width: none;
+    height: 75vh !important;
+    margin-top: 0vh;
     margin-left: 2%;
     margin-right: 2%;
-    text-align: center;
-    scrollbar-width: thin;
-    scrollbar-color: #003969 #000;
-    background-size: cover;
-    background-color: black;
-    position: relative;
-    background-image: url(../imagem/fundoazlist.gif);
-}     
-#azlist li {
-    padding: 1.5vh;
-    transition: background 0.3s, transform 0.2s;
+    border: 0.5vh solid #003969;
 }
-#azlist li a {
-    text-decoration: none;
-    color: #0f0;
-    font-size: 2.5vh;
-}
-    input#searchInput {
-        width: 96%;
-        margin-left: 2%;
-        margin-right: 2%;
-        background-color: transparent;
-        border: solid 0.05vh #999;
-        margin-bottom: 0.6vh;
-        background: black;
-        text-align: center;
-        font-size: 2vh;
-        font-family: 'Montserrat', sans-serif;
-        color: #999;
-        padding: 0.8vh;
-        border-radius: 0.5vh;
-        margin-top: -0.5vh;
-        position: revert-layer;
-        z-index: 0;
+    #game2 {
+        width: 100vw;
+        height: 100vh !important;
+        margin-top: 0vh;
+        margin-left: 0%;
+        margin-right: 0%;
+        border: 0.5vh solid #003969;
     }
     
 }
