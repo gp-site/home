@@ -22,6 +22,28 @@ document.addEventListener('keydown', function(e) {
 });
 
 (async function() {
+    // Detecta iOS
+    function isIOS() {
+        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    // Se for iOS, altera o ID do game e oculta o topo
+    if (isIOS()) {
+        const gameDiv = document.getElementById('game');
+        if (gameDiv) {
+            gameDiv.id = gameDiv.id + '2'; // Muda para "game2"
+        }
+        const topDiv = document.getElementById('top');
+        if (topDiv) {
+            topDiv.style.display = 'none'; // Oculta o topo
+        }
+        // Atualiza o EJS_player para o novo ID
+        if (typeof window.EJS_player === 'string' && window.EJS_player.includes('game')) {
+            window.EJS_player = window.EJS_player + '2';
+        }
+    }
+
+    // Scripts do emulador
     const scripts = [
         "emulator.js",
         "nipplejs.js",
@@ -35,7 +57,6 @@ document.addEventListener('keydown', function(e) {
 
     const folderPath = (path) => path.substring(0, path.length - path.split('/').pop().length);
 
-    // ✅ Corrige EJS_pathtodata antes de usar
     if (typeof window.EJS_pathtodata === "string" && window.EJS_pathtodata.includes("latest")) {
         window.EJS_pathtodata = window.EJS_pathtodata.replace("latest", "stable");
         console.log("Corrigido EJS_pathtodata para:", window.EJS_pathtodata);
@@ -48,14 +69,14 @@ document.addEventListener('keydown', function(e) {
     if (!scriptPath.endsWith('/')) scriptPath += '/';
 
     function loadScript(file) {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             let script = document.createElement('script');
             script.src = (typeof EJS_paths !== 'undefined' && typeof EJS_paths[file] === 'string')
                 ? EJS_paths[file]
                 : (file.endsWith("emulator.min.js") ? scriptPath + file : scriptPath + "src/" + file);
             script.onload = resolve;
             script.onerror = () => {
-                filesmissing(file).then(e => resolve());
+                filesmissing(file).then(() => resolve());
             };
             document.head.appendChild(script);
         });
@@ -70,7 +91,7 @@ document.addEventListener('keydown', function(e) {
                 : scriptPath + file;
             css.onload = resolve;
             css.onerror = () => {
-                filesmissing(file).then(e => resolve());
+                filesmissing(file).then(() => resolve());
             };
             document.head.appendChild(css);
         });
@@ -164,7 +185,7 @@ document.addEventListener('keydown', function(e) {
         }
     } catch(e) {}
 
-    window.EJS_emulator = new EmulatorJS(EJS_player, config);
+    window.EJS_emulator = new EmulatorJS(window.EJS_player, config);
 
     if (typeof window.EJS_ready === "function") window.EJS_emulator.on("ready", window.EJS_ready);
     if (typeof window.EJS_onGameStart === "function") window.EJS_emulator.on("start", window.EJS_onGameStart);
@@ -182,7 +203,11 @@ linkDownload.textContent = "Baixar Rom";
 linkDownload.style.cursor = "pointer";
 linkDownload.onclick = function(e) {
     e.preventDefault();
-    window.location.href = EJS_gameUrl;
+    if (typeof window.EJS_gameUrl === 'string') {
+        window.location.href = window.EJS_gameUrl;
+    } else {
+        console.error("EJS_gameUrl não definido!");
+    }
 };
 
 novoLi.appendChild(linkDownload);
