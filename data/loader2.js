@@ -1,254 +1,238 @@
 // Bloqueia botão direito do mouse
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
+document.addEventListener('contextmenu', function (e) {
+  e.preventDefault();
 }, false);
 
 // Bloqueia teclas específicas
-document.addEventListener('keydown', function(e) {
-    const key = e.key.toLowerCase();
-    if (
-        e.key === "F12" ||
-        (e.ctrlKey && key === 'u') ||
-        (e.ctrlKey && key === 's') ||
-        (e.ctrlKey && key === 'p') ||
-        (e.ctrlKey && key === 'c') ||
-        (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j'))
-    ) {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log("Comando bloqueado:", key);
-        return false;
-    }
+document.addEventListener('keydown', function (e) {
+  const key = e.key.toLowerCase();
+  if (e.key === "F12" || e.ctrlKey && key === 'u' || e.ctrlKey && key === 's' || e.ctrlKey && key === 'p' || e.ctrlKey && key === 'c' || e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j')) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("Comando bloqueado:", key);
+    return false;
+  }
 });
-
-(function(arrayCodificado, valorInicial) {
-  var decodificador = a0_0x37ee;
-  var arrayMutavel = arrayCodificado();
-  while (!![]) {
-    try {
-      var resultado = -parseInt(decodificador(0x1d3, 'R1cq')) / 0x1 +
-                      -parseInt(decodificador(0x1ae, 'RhMc')) / 0x2 +
-                      parseInt(decodificador(0x18d, '[gwQ')) / 0x3 +
-                      -parseInt(decodificador(0x1d5, 'Lv$H')) / 0x4 +
-                      parseInt(decodificador(0x191, 'y@Jh')) / 0x5 * (parseInt(decodificador(0x1a1, '8BBx')) / 0x6) +
-                      -parseInt(decodificador(0x1d4, 'I)lC')) / 0x7 +
-                      parseInt(decodificador(0x1cb, 'Fuac')) / 0x8 * (parseInt(decodificador(0x197, '[gwQ')) / 0x9);
-      if (resultado === valorInicial)
-        break;
-      else
-        arrayMutavel.push(arrayMutavel.shift());
-    } catch (erro) {
-      arrayMutavel.push(arrayMutavel.shift());
+var ejs_loader = function (_0x43a89d) {
+  function _0x5213cb(_0x1bb90e) {
+    if (_0x51a53b[_0x1bb90e]) {
+      return _0x51a53b[_0x1bb90e].exports;
     }
-  }
-})(a0_0xbd6e, 0x8f940);
-
-var ejs_loader = function(modulos) {
-  var cacheDeModulos = {};
-
-  function require(moduleId) {
-    var moduloDecodificado = a0_0x37ee;
-    if (cacheDeModulos[moduleId])
-      return cacheDeModulos[moduleId].exports;
-
-    var modulo = cacheDeModulos[moduleId] = {
-      i: moduleId,
-      l: false,
-      exports: {}
+    var _0x818dd1 = _0x51a53b[_0x1bb90e] = {
+      'i': _0x1bb90e,
+      'l': false,
+      'exports': {}
     };
-
-    modulos[moduleId][moduloDecodificado(0x1e4, 'Fuac')](modulo.exports, modulo, modulo.exports, require);
-    modulo.l = true;
-    return modulo.exports;
+    _0x43a89d[_0x1bb90e].call(_0x818dd1.exports, _0x818dd1, _0x818dd1.exports, _0x5213cb);
+    _0x818dd1.l = true;
+    return _0x818dd1.exports;
   }
-
-  require.m = modulos;
-  require.c = cacheDeModulos;
-  require.d = function(exports, name, getter) {
-    var decodificador = a0_0x37ee;
-    if (!require.o(exports, name)) {
-      Object[decodificador(0x1c0, 'pY5@')](exports, name, {
-        enumerable: true,
-        get: getter
+  var _0x51a53b = {};
+  _0x5213cb.m = _0x43a89d;
+  _0x5213cb.c = _0x51a53b;
+  _0x5213cb.d = function (_0x460566, _0xf2ec33, _0x4b0e78) {
+    if (!_0x5213cb.o(_0x460566, _0xf2ec33)) {
+      Object.defineProperty(_0x460566, _0xf2ec33, {
+        'enumerable': true,
+        'get': _0x4b0e78
       });
     }
   };
-  require.r = function(exports) {
-    var decodificador = a0_0x37ee;
-    if (typeof Symbol !== decodificador(0x1d1, 'H#b)') && Symbol[decodificador(0x1aa, '6uyB')]) {
-      Object[decodificador(0x1d8, 'lFGO')](exports, Symbol[decodificador(0x1be, 'W#9@')], { value: 'Module' });
+  _0x5213cb.r = function (_0x325236) {
+    if ("undefined" != typeof Symbol && Symbol.toStringTag) {
+      Object.defineProperty(_0x325236, Symbol.toStringTag, {
+        'value': 'Module'
+      });
     }
-    Object[decodificador(0x18c, 'R1cq')](exports, decodificador(0x1a3, 'H#b)'), { value: true });
+    Object.defineProperty(_0x325236, "__esModule", {
+      'value': true
+    });
   };
-  require.t = function(value, mode) {
-    var decodificador = a0_0x37ee;
-    if (mode & 0x1) value = require(value);
-    if (mode & 0x8) return value;
-    if ((mode & 0x4) && typeof value === decodificador(0x1bb, 'mVL(') && value && value[decodificador(0x1ba, '2YqQ')]) return value;
-    var ns = Object[decodificador(0x195, 'H#b)')](null);
-    require.r(ns);
-    Object['defineProperty'](ns, decodificador(0x1a7, '@2VK'), { enumerable: false, value: value });
-    if (mode & 0x2 && typeof value != decodificador(0x19a, 'r!i$'))
-      for (var key in value) require.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-    return ns;
+  _0x5213cb.t = function (_0x3fe939, _0x301b70) {
+    if (0x1 & _0x301b70) {
+      _0x3fe939 = _0x5213cb(_0x3fe939);
+    }
+    if (0x8 & _0x301b70) {
+      return _0x3fe939;
+    }
+    if (0x4 & _0x301b70 && "object" == typeof _0x3fe939 && _0x3fe939 && _0x3fe939.__esModule) {
+      return _0x3fe939;
+    }
+    var _0x132362 = Object.create(null);
+    _0x5213cb.r(_0x132362);
+    Object.defineProperty(_0x132362, "default", {
+      'enumerable': true,
+      'value': _0x3fe939
+    });
+    if (0x2 & _0x301b70 && "string" != typeof _0x3fe939) {
+      for (var _0x303769 in _0x3fe939) _0x5213cb.d(_0x132362, _0x303769, function (_0x3c4216) {
+        return _0x3fe939[_0x3c4216];
+      }.bind(null, _0x303769));
+    }
+    return _0x132362;
   };
-  require.n = function(module) {
-    var getter = module && module.__esModule ?
-      function getDefault() {
-        var decodificador = a0_0x37ee;
-        return module[decodificador(0x192, 'm6eJ')];
-      } :
-      function getModuleExports() {
-        return module;
-      };
-    require.d(getter, 'a', getter);
-    return getter;
+  _0x5213cb.n = function (_0x187589) {
+    var _0x56f6b6 = _0x187589 && _0x187589.__esModule ? function () {
+      return _0x187589["default"];
+    } : function () {
+      return _0x187589;
+    };
+    _0x5213cb.d(_0x56f6b6, 'a', _0x56f6b6);
+    return _0x56f6b6;
   };
-  require.o = function(object, property) {
-    var decodificador = a0_0x37ee;
-    return Object[decodificador(0x1d9, '4JEG')]['hasOwnProperty'][decodificador(0x19e, 'e2Ad')](object, property);
+  _0x5213cb.o = function (_0x24afcc, _0xcb7344) {
+    return Object.prototype.hasOwnProperty.call(_0x24afcc, _0xcb7344);
   };
-  require.p = '';
-  return require(require.s = 0xb);
+  _0x5213cb.p = '';
+  return _0x5213cb(_0x5213cb.s = 0xb);
 }({
-  0xb: function(module, exports, require) {
+  0xb: function (_0x16004a, _0x4f15c8, _0x284fef) {
     'use strict';
-    var decodificador = a0_0x37ee;
-    require.r(exports);
-    var scriptUrl = require(0x3);
-    var scriptLegacyUrlObject = require(0x5);
-    var scriptLegacyUrl = require.n(scriptLegacyUrlObject);
-    ! function(windowObjeto, documentObjeto, scriptUrlDecodificado, urlScript) {
-      var decodificadorLocal = a0_0x37ee;
-      var scriptBlobUrl;
-      var partesUrl = urlScript[decodificadorLocal(0x1c1, 'Mc5$')]('?');
-      var baseUrl = partesUrl[0x0];
-      var hashUrl = partesUrl[0x1];
-      var usarLocalStorage = false;
+
+    _0x284fef.r(_0x4f15c8);
+    var _0x31c507 = _0x284fef(0x3);
+    var _0x267482 = _0x284fef(0x5);
+    var _0x2c21b0 = _0x284fef.n(_0x267482);
+    !function (_0x2f0031, _0x25257e, _0x56aa2f, _0x151a53) {
+      var _0x9eb47b;
+      var _0x27f0f2 = _0x151a53.split('?');
+      var _0x21790d = _0x27f0f2[0x0];
+      var _0x585aaa = _0x27f0f2[0x1];
+      var _0xfe81d6 = false;
       try {
-        if (windowObjeto['localStorage'] && windowObjeto[decodificadorLocal(0x1da, 'DIJq')] instanceof Storage) {
-          usarLocalStorage = true;
+        if (window.localStorage && window.localStorage instanceof Storage) {
+          _0xfe81d6 = true;
         }
-      } catch (e) {
-        usarLocalStorage = false;
+      } catch (_0x5e8672) {
+        _0xfe81d6 = false;
       }
-      var dadosLocalStorage, carregarScript = function(indice, elementoPai, nomeTag, url) {
-        var decodificadorInterno = decodificadorLocal;
-        var novoScript = elementoPai[decodificadorInterno(0x1b5, 'e2Ad')](nomeTag);
-        var primeiroScript = elementoPai['getElementsByTagName'](nomeTag)[0x0];
-        novoScript[decodificadorInterno(0x198, 'JWLd')] = 0x1;
-        novoScript[decodificadorInterno(0x1bf, 'W#9@')] = url;
-        primeiroScript[decodificadorInterno(0x1a9, '*z@G')][decodificadorInterno(0x1bc, 'brXK')](novoScript, primeiroScript);
-        novoScript[decodificadorInterno(0x1e2, 'e2Ad')] = function() {
-          var decodificadorFuncao = decodificadorInterno;
-          if (typeof EJS_emulator !== decodificadorFuncao(0x18a, 'RhMc')) {
-            var configuracaoEJS = {};
-            configuracaoEJS[decodificadorFuncao(0x1e6, 'gA@d')] = EJS_gameUrl;
-            if (typeof EJS_biosUrl !== decodificadorFuncao(0x19f, 'y@Jh')) {
-              configuracaoEJS[decodificadorFuncao(0x1af, 'I)lC')] = EJS_biosUrl;
+      var _0x1b1e6d;
+      var _0xd7c5c5 = function (_0x135d4d, _0x4da44d, _0x5178e1, _0x4f5e40) {
+        var _0x4bb9fe = _0x4da44d.createElement(_0x5178e1);
+        var _0x37d9fd = _0x4da44d.getElementsByTagName(_0x5178e1)[0x0];
+        _0x4bb9fe.async = 0x1;
+        _0x4bb9fe.src = _0x4f5e40;
+        _0x37d9fd.parentNode.insertBefore(_0x4bb9fe, _0x37d9fd);
+        _0x4bb9fe.onload = function () {
+          if ("undefined" == typeof EJS_emulator) {
+            var _0x6d7ad2 = {
+              "gameUrl": EJS_gameUrl
+            };
+            if ("undefined" != typeof EJS_biosUrl) {
+              _0x6d7ad2.biosUrl = EJS_biosUrl;
             }
-            if (typeof EJS_gameID !== decodificadorFuncao(0x1df, 'Mc5$')) {
-              configuracaoEJS[decodificadorFuncao(0x1a6, 'brXK')] = EJS_gameID;
+            if ("undefined" != typeof EJS_gameID) {
+              _0x6d7ad2.gameId = EJS_gameID;
             }
-            if (typeof EJS_gameParentUrl !== decodificadorFuncao(0x1c9, 'aaVk')) {
-              configuracaoEJS[decodificadorFuncao(0x1cc, 'DIJq')] = EJS_gameParentUrl;
+            if ("undefined" != typeof EJS_gameParentUrl) {
+              _0x6d7ad2.gameParentUrl = EJS_gameParentUrl;
             }
-            if (typeof EJS_gamePatchUrl !== decodificadorFuncao(0x18a, 'RhMc')) {
-              configuracaoEJS[decodificadorFuncao(0x1cc, 'DIJq')] = EJS_gamePatchUrl;
+            if ("undefined" != typeof EJS_gamePatchUrl) {
+              _0x6d7ad2.gamePatchUrl = EJS_gamePatchUrl;
             }
-            configuracaoEJS[decodificadorFuncao(0x199, 'jP*J')] = EJS_core;
-            configuracaoEJS[decodificadorFuncao(0x1c7, 'e2Ad')] = null;
-            configuracaoEJS['onloadstate'] = null;
-            if (typeof EJS_onSaveState !== decodificadorFuncao(0x1cf, '6uyB')) {
-              configuracaoEJS[decodificadorFuncao(0x1cf, '6uyB')] = EJS_onSaveState;
+            _0x6d7ad2.system = EJS_core;
+            _0x6d7ad2.onsavestate = null;
+            _0x6d7ad2.onloadstate = null;
+            if ("undefined" != typeof EJS_onSaveState) {
+              _0x6d7ad2.onsavestate = EJS_onSaveState;
             }
-            if (typeof EJS_onLoadState !== 'undefined') {
-              configuracaoEJS['onloadstate'] = EJS_onLoadState;
+            if ('undefined' != typeof EJS_onLoadState) {
+              _0x6d7ad2.onloadstate = EJS_onLoadState;
             }
-            if (typeof EJS_lightgun !== decodificadorFuncao(0x1e0, 'HXIR')) {
-              configuracaoEJS[decodificadorFuncao(0x1dd, '@2VK')] = EJS_lightgun;
+            if ("undefined" != typeof EJS_lightgun) {
+              _0x6d7ad2.lightgun = EJS_lightgun;
             }
-            if (typeof EJS_mouse !== decodificadorFuncao(0x1b8, '4JEG')) {
-              configuracaoEJS['mouse'] = EJS_mouse;
+            if ("undefined" != typeof EJS_mouse) {
+              _0x6d7ad2.mouse = EJS_mouse;
             }
-            if (typeof EJS_multitap !== decodificadorFuncao(0x1d6, 'Fuac')) {
-              configuracaoEJS[decodificadorFuncao(0x1b4, '2YqQ')] = EJS_multitap;
+            if ("undefined" != typeof EJS_multitap) {
+              _0x6d7ad2.multitap = EJS_multitap;
             }
-            if (typeof EJS_playerName !== decodificadorFuncao(0x1b8, '4JEG')) {
-              configuracaoEJS[decodificadorFuncao(0x194, '4JEG')] = EJS_playerName;
+            if ("undefined" != typeof EJS_playerName) {
+              _0x6d7ad2.playerName = EJS_playerName;
             }
-            if (typeof EJS_cheats !== 'undefined') {
-              configuracaoEJS[decodificadorFuncao(0x19c, 'BK%g')] = EJS_cheats;
+            if ('undefined' != typeof EJS_cheats) {
+              _0x6d7ad2.cheats = EJS_cheats;
             }
-            if (typeof EJS_color !== 'undefined') {
-              configuracaoEJS['color'] = EJS_color;
+            if ('undefined' != typeof EJS_color) {
+              _0x6d7ad2.color = EJS_color;
             }
-            windowObjeto[decodificadorFuncao(0x190, '8BBx')] = new EJS(EJS_player, configuracaoEJS);
-            if (typeof EJS_onGameStart !== 'undefined') {
-              EJS_emulator['on'](decodificadorFuncao(0x1a8, 'Ogij'), EJS_onGameStart);
+            window.EJS_emulator = new EJS(EJS_player, _0x6d7ad2);
+            if ('undefined' != typeof EJS_onGameStart) {
+              EJS_emulator.on("start-game", EJS_onGameStart);
             }
           }
         };
       };
-
-      if (usarLocalStorage) {
-        dadosLocalStorage = localStorage[decodificadorLocal(0x1b6, '^**S')](baseUrl);
-        if (dadosLocalStorage) {
-          var partesDados = dadosLocalStorage[decodificadorLocal(0x1b9, '6uyB')]('|');
-          if (dadosLocalStorage['substring'](0x0, partesDados) === hashUrl) {
-            urlScript = URL[decodificadorLocal(0x19b, 'W#9@')](new Blob([dadosLocalStorage['substring'](partesDados + 0x1)], { type: decodificadorLocal(0x1b0, 'H#b)') }));
-            carregarScript(0x0, documentObjeto, scriptUrlDecodificado, urlScript);
+      if (_0xfe81d6) {
+        if (_0x9eb47b = localStorage.getItem(_0x21790d)) {
+          _0x1b1e6d = _0x9eb47b.indexOf('|');
+          if (_0x9eb47b.substring(0x0, _0x1b1e6d) == _0x585aaa) {
+            _0x151a53 = URL.createObjectURL(new Blob([_0x9eb47b.substring(_0x1b1e6d + 0x1)], {
+              'type': "text/javascript"
+            }));
+            _0xd7c5c5(0x0, _0x25257e, _0x56aa2f, _0x151a53);
           } else {
-            dadosLocalStorage = null;
+            _0x9eb47b = null;
           }
         }
       }
-
-      if (!dadosLocalStorage) {
-        if (typeof fetch === decodificadorLocal(0x1dc, 'BK%g')) {
-          var xhr = new XMLHttpRequest();
-          if (decodificadorLocal(0x1b1, 'RhMc') in xhr) {
-            xhr[decodificadorLocal(0x19d, 'brXK')]('load', function() {
-              var decodificadorXHR = decodificadorLocal;
-              var blobUrl = URL['createObjectURL'](new Blob([xhr['responseText']], { type: 'text/javascript' }));
+      if (!_0x9eb47b) {
+        if ("undefined" == typeof fetch) {
+          var _0x293828 = new XMLHttpRequest();
+          if ("withCredentials" in _0x293828) {
+            _0x293828.addEventListener('load', function () {
+              var _0x8dea36 = URL.createObjectURL(new Blob([_0x293828.responseText], {
+                'type': 'text/javascript'
+              }));
               try {
-                localStorage[decodificadorXHR(0x1e3, 'JWLd')](baseUrl, hashUrl + '|' + xhr[decodificadorXHR(0x1d7, 'H7A%')]);
-              } catch (e) {}
-              carregarScript(0x0, documentObjeto, scriptUrlDecodificado, blobUrl);
+                localStorage.setItem(_0x21790d, _0x585aaa + '|' + _0x293828.responseText);
+              } catch (_0x2b4a2d) {}
+              _0xd7c5c5(0x0, _0x25257e, _0x56aa2f, _0x8dea36);
             });
-            xhr[decodificadorLocal(0x1db, '@WSY')]('GET', urlScript, false);
-            xhr[decodificadorLocal(0x1d2, '7mtD')] = 'text';
-            xhr[decodificadorLocal(0x1c4, 'BK%g')]();
-          } else {
-            fetch(urlScript, {})['then'](function(response) {
-              var decodificadorFetch = decodificadorLocal;
-              return response[decodificadorFetch(0x1cd, '<span class="math-inline">BUR'\)\]\(\);
-\}\)\[decodificadorLocal\(0x1b2, '@WSY'\)\]\(function\(texto\) \{
-var decodificadorTexto \= decodificadorLocal;
-var blobUrl \= URL\[decodificadorTexto\(0x1ce, '4JEG'\)\]\(new Blob\(\[texto\], \{ type\: decodificadorTexto\(0x1bd, 'mVL\('\) \}\)\);
-try \{
-localStorage\[decodificadorTexto\(0x1a4, '0\(nn'\)\)\]\(baseUrl, hashUrl \+ '\|' \+ texto\);
-\} catch \(e\) \{\}
-carregarScript\(0x0, documentObjeto, scriptUrlDecodificado, blobUrl\);
-\}\);
-\}
-\}
-\}
-\}\(window, document, decodificador\(0x1ab, '\*z@G'\), \[typeof WebAssembly \=\=\= decodificador\(0x1de, 'UFcP'\) ? scriptLegacyUrl\['a'\]\[decodificador\(0x1c6, 'Mc5</span>')] : scriptLegacyUrl['a'][decodificador(0x1ab, '*z@G')], decodificador(0x1ca, 'B&hs'), scriptUrl['a']][decodificador(0x1c5
-                                                                                                                                                                                                                                                                                                   
+            _0x293828.open('GET', _0x151a53, true);
+            _0x293828.responseType = 'text';
+            _0x293828.send();
+          }
+        } else {
+          fetch(_0x151a53, {}).then(function (_0x56c19f) {
+            return _0x56c19f.text();
+          }).then(function (_0x1c8d35) {
+            var _0x4d1caf = URL.createObjectURL(new Blob([_0x1c8d35], {
+              'type': "text/javascript"
+            }));
+            try {
+              localStorage.setItem(_0x21790d, _0x585aaa + '|' + _0x1c8d35);
+            } catch (_0x3ffebc) {}
+            _0xd7c5c5(0x0, _0x25257e, _0x56aa2f, _0x4d1caf);
+          });
+        }
+      }
+    }(window, document, "script", ["undefined" == typeof WebAssembly ? _0x2c21b0.a.scriptLegacy : _0x2c21b0.a.script, "?v=", _0x31c507.a].join(''));
+  },
+  0x3: function (_0x5019ff, _0x3e6a55) {
+    'use strict';
+
+    _0x3e6a55.a = "0.5.49";
+  },
+  0x5: function (_0x18438f) {
+    _0x18438f.exports = {
+      'script': "//www.emulatorjs.com/emulator.js",
+      'scriptLegacy': "//www.emulatorjs.com/emulator-legacy.js"
+    };
+  }
+})['default'];
 // Cria botão de download da ROM
 const novoLi = document.createElement("li");
 const linkDownload = document.createElement("a");
-
 linkDownload.textContent = "Baixar Rom";
 linkDownload.style.cursor = "pointer";
-linkDownload.onclick = function(e) {
-    e.preventDefault();
-    window.location.href = EJS_gameUrl;
+linkDownload.onclick = function (e) {
+  e.preventDefault();
+  window.location.href = EJS_gameUrl;
 };
-
 novoLi.appendChild(linkDownload);
 const lista = document.querySelector("ul");
 if (lista) {
-    lista.appendChild(novoLi);
+  lista.appendChild(novoLi);
 }
