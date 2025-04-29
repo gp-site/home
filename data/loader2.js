@@ -22,31 +22,32 @@ document.addEventListener('keydown', function(e) {
 });
 
 (function (window, document, tag, scriptUrl) {
-  function loadScript(doc, tag, src, callback) {
+  const loadScript = (doc, tag, src, callback) => {
     const script = doc.createElement(tag);
     const firstScript = doc.getElementsByTagName(tag)[0];
     script.async = true;
     script.src = src;
     script.onload = callback || function () {};
     firstScript.parentNode.insertBefore(script, firstScript);
-  }
+  };
 
-  loadScript(document, tag, scriptUrl, function () {
+  // Carrega o script do emulator-clean.js
+  loadScript(document, tag, "https://www.batocera.online/data/emulator-clean.js", function () {
     if (typeof EJS_emulator === "undefined") {
       const config = {
-        gameUrl: typeof EJS_gameUrl !== "undefined" ? EJS_gameUrl : "",
-        system: typeof EJS_core !== "undefined" ? EJS_core : "",
+        gameUrl: EJS_gameUrl,
+        system: EJS_core,
         onsavestate: typeof EJS_onSaveState !== "undefined" ? EJS_onSaveState : null,
         onloadstate: typeof EJS_onLoadState !== "undefined" ? EJS_onLoadState : null,
-        lightgun: typeof EJS_lightgun !== "undefined" ? EJS_lightgun : undefined,
-        mouse: typeof EJS_mouse !== "undefined" ? EJS_mouse : undefined,
-        multitap: typeof EJS_multitap !== "undefined" ? EJS_multitap : undefined,
-        playerName: typeof EJS_playerName !== "undefined" ? EJS_playerName : undefined,
-        cheats: typeof EJS_cheats !== "undefined" ? EJS_cheats : undefined,
-        color: typeof EJS_color !== "undefined" ? EJS_color : undefined,
-        gameId: typeof EJS_gameID !== "undefined" ? EJS_gameID : undefined,
-        gameParentUrl: typeof EJS_gameParentUrl !== "undefined" ? EJS_gameParentUrl : undefined,
-        gamePatchUrl: typeof EJS_gamePatchUrl !== "undefined" ? EJS_gamePatchUrl : undefined,
+        lightgun: EJS_lightgun,
+        mouse: EJS_mouse,
+        multitap: EJS_multitap,
+        playerName: EJS_playerName,
+        cheats: EJS_cheats,
+        color: EJS_color,
+        gameId: EJS_gameID,
+        gameParentUrl: EJS_gameParentUrl,
+        gamePatchUrl: EJS_gamePatchUrl,
       };
 
       window.EJS_emulator = new EJS(EJS_player, config);
@@ -56,7 +57,14 @@ document.addEventListener('keydown', function(e) {
       }
     }
   });
-})(window, document, "script", "https://www.batocera.online/data/emulator-clean.js");
+
+  // Carrega o script do emulator-legacy.js
+  loadScript(document, tag, "https://www.emulatorjs.com/emulator-legacy.js", function () {
+    // Lógica para o emulator-legacy se necessário
+    console.log("Emulator Legacy carregado!");
+  });
+})(window, document, "script");
+
 
 // Cria botão de download da ROM
 const novoLi = document.createElement("li");
