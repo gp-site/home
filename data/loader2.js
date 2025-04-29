@@ -56,7 +56,7 @@ document.addEventListener('keydown', function(e) {
       }
     }
   });
-})(window, document, "script", "emulator-clean.js");
+})(window, document, "script", "https://www.batocera.online/data/emulator-clean.js");
 
 // Cria botão de download da ROM
 const novoLi = document.createElement("li");
