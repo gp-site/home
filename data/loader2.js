@@ -1,26 +1,3 @@
-// Bloqueia botão direito do mouse
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-}, false);
-
-// Bloqueia teclas específicas
-document.addEventListener('keydown', function(e) {
-    const key = e.key.toLowerCase();
-    if (
-        e.key === "F12" ||
-        (e.ctrlKey && key === 'u') ||
-        (e.ctrlKey && key === 's') ||
-        (e.ctrlKey && key === 'p') ||
-        (e.ctrlKey && key === 'c') ||
-        (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j'))
-    ) {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log("Comando bloqueado:", key);
-        return false;
-    }
-});
-
 !function r(c, a, f) {
   function o(n, t) {
     if (!a[n]) {
@@ -15502,21 +15479,3 @@ var EJS = function (_0x26304a) {
   }();
   _0x12f92f[a0_0x399d(5223 - -a0_0x5c697f._0x13be2d, 6484)] = {}, _0x31ddb6[a0_0x399d(4951 - -a0_0x5c697f._0x13be2d, a0_0xb8f35d._0x393a49)] = _0x12f92f;
 }]).default;
-
-          
-// Cria botão de download da ROM
-const novoLi = document.createElement("li");
-const linkDownload = document.createElement("a");
-
-linkDownload.textContent = "Baixar Rom";
-linkDownload.style.cursor = "pointer";
-linkDownload.onclick = function(e) {
-    e.preventDefault();
-    window.location.href = EJS_gameUrl;
-};
-
-novoLi.appendChild(linkDownload);
-const lista = document.querySelector("ul");
-if (lista) {
-    lista.appendChild(novoLi);
-}
