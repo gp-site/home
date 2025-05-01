@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thunder Warrior - Nintendo | Batocera Online</title>
+    <link rel="icon" href="docs/favicon.ico" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="imagem/favicon.png">
+    <meta name="description" content="Jogue Thunder Warrior online no seu navegador! Reviva a nostalgia do clássico do Nintendo sem precisar baixar ROMs. Diversão garantida!">
+    <meta name="keywords" content="Thunder Warrior, Nes, Nintendo, jogo online, emulador Nes, ROM, clássico Nes, jogos retrô, jogos antigos, diversão online, navegador, sem download">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="requestFullScreen()">
+    <div id="top">
+        <header>
+            <img src="../imagem/logo.png" alt="Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="../../">Início</a></li>
+                    <li><a href="../../emulador">Use Sua Rom</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Thunder Warrior - Nintendo</h1>
+    </div>
+
+    <div id="game"></div>
+
+    <script type='text/javascript'>
+        function requestFullScreen() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
+        EJS_player = '#game';
+        EJS_core = 'nes';
+        EJS_lightgun = false;
+        EJS_color = "#0097c4";
+        EJS_backgroundColor = "#000";
+        EJS_biosUrl = '';
+        EJS_gameUrl = '/roms/Thunder Warrior (Asia) (Unl).zip';
+        EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
+        EJS_startOnLoaded = true;
+    </script>
+    <script src="rom.js"></script>
+    <script src='../../data/loader.js'></script>
+</body>
+</html>
