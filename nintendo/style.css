@@ -172,7 +172,7 @@ input#searchInput {
     height: 70.7vh;
     overflow-y: auto;
     overflow-x: hidden;
-    border: 0.5vh solid #003969;
+    border: 0.5vh solid #9999994a;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 1vh;
     scrollbar-width: none;
@@ -180,11 +180,12 @@ input#searchInput {
     margin-right: 2%;
     text-align: center;
     scrollbar-width: thin;
-    scrollbar-color: #003969 #000;
+    scrollbar-color: #9999994a #000;
     background-size: cover;
     background-color: black;
     position: relative;
     background-image: url(../imagem/fundoazlist.gif);
+    font-family: 'Rajdhani', sans-serif;
 }     
 #azlist li {
     padding: 1.5vh;
