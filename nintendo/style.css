@@ -68,7 +68,7 @@ h1 {
     font-size: 4vh;
 }
 #azlist li:hover {
-    background: #003969;
+    background: #9999994a; hover
 }
 #azlist {
     list-style: none;
@@ -77,7 +77,7 @@ h1 {
     height: 65vh;
     overflow-y: auto;
     overflow-x: hidden;
-    border: 0.5vh solid #003969;
+    border: 0.5vh solid #9999994a;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 1vh;
     scrollbar-width: none;
@@ -85,13 +85,14 @@ h1 {
     margin-right: 18%;
     text-align: center;
     scrollbar-width: thin;
-    scrollbar-color: #003969 #000;
+    scrollbar-color: #9999994a #000;
     background-size: cover;
     background-color:black;
     position: relative;
     background-image: url('../imagem/fundoazlist.gif');
     background-position: center;
     background-size: cover;
+    font-family: 'Rajdhani', sans-serif;
 }
     
 #azlist li {
