@@ -1,16 +1,44 @@
-<script type="text/javascript">
-    EJS_player = '#game';
-    EJS_core = 'snes';
-    EJS_lightgun = false;
-    EJS_mouse = false;
-    EJS_multitap = false;
-    EJS_color = "#0097c4";
-    EJS_backgroundColor = "#000";
-    EJS_biosUrl = '';
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>3x3 Eyes - Seima Kourinden - Super Nintendo | Batocera Online </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="docs/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Jogue 3x3 Eyes - Seima Kourinden online no seu navegador!">
+</head>
 
-    // Usando o AllOrigins para contornar CORS
-    EJS_gameUrl = 'https://api.allorigins.win/raw?url=https://archive.org/download/snesromsetcompleate/2020%20Super%20Baseball%20%28U%29.zip';
+<body>
+    <div id="top">
+        <header>
+            <img src="../imagem/logo.png" alt="Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="../../">Início</a></li>
+                    <li><a href="../../emulador">Use Sua Rom</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>3x3 Eyes - Seima Kourinden - Super Nintendo</h1>
+    </div>
 
-    EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
-    EJS_startOnLoaded = true;
-</script>
+    <div id="game" style="width:100%; height:80vh;"></div>
+
+    <script type="text/javascript">
+        EJS_player = '#game';
+        EJS_core = 'snes';
+        EJS_lightgun = false;
+        EJS_mouse = false;
+        EJS_multitap = false;
+        EJS_color = "#0097c4";
+        EJS_backgroundColor = "#000";
+        EJS_biosUrl = '';
+        EJS_gameUrl = 'https://api.allorigins.win/raw?url=https://archive.org/download/snesromsetcompleate/2020%20Super%20Baseball%20%28U%29.zip';
+        EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
+        EJS_startOnLoaded = true;
+    </script>
+
+    <script src="https://cdn.emulatorjs.org/latest/loader.js"></script>
+</body>
+</html>
